@@ -1,6 +1,7 @@
 import Header from '@/components/Header'
 import { BsRocketTakeoff } from "react-icons/bs";
-import { FaLink, FaCalendarCheck, FaEnvelopeOpenText, FaListUl } from "react-icons/fa6";
+import { FaLink, FaCalendarCheck, FaEnvelopeOpenText, FaListUl, FaLaptop, FaRegFileExcel, FaWhatsapp, FaRegAddressBook, FaRegCalendarCheck } from "react-icons/fa6";
+import { FiMail } from "react-icons/fi"
 import Image from "next/image";
 import "@/app/page.module.css"
 
@@ -26,71 +27,127 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className=" hidden sm:block">
+          <div className=" hidden md:block">
             <Image src="/frontPrincipal.png" width={500} height={600} className="animationFront"/>
           </div>
         </div>
 
-        <div className="flex flex-col items-center text-center bg-white text-black text-2xl pt-4 font-bold">
+        <div className="flex flex-col items-center text-center bg-white text-black text-2xl pt-4 p-6 font-bold">
             <div className='text-4xl mt-4'>
               <h2>Brinda una mejor experiencia con nosotros</h2>
             </div>
-            <div className='mt-12'>
-            <div className='flex flex-col justify-center items-center w-full mb-6 sm:flex-row sm:justify-center sm:gap-8'>
-              <Image src="/organizacion.jpg" width={250} height={250} className='rounded-lg'/>
-              <div className='flex flex-col items-center justify-center w-full gap-3 mt-4 mb-8 sm:w-1/3 sm:mt-0 sm:mb-0'>
-                <h3 className='text-black font-bold text-2xl'>Presencia online</h3>
-                <h4 className='text-one-500 text-center text-lg'>Ayeendo te permitirá crear tu propio sitio web para que tus pacientes puedan agendar contigo de forma automática.</h4>
+            <div className='flex flex-col gap-3 mt-12 w-3/4 lg:grid lg:grid-cols-2 lg:gap-6'>
+              <div className='flex flex-col justify-center items-center w-full mb-6 sm:flex-row sm:justify-center sm:gap-8'>
+                <FaLaptop className='text-8xl text-one-500'/>
+                <div className='flex flex-col items-center justify-center w-full gap-3 mt-4 sm:w-2/3 sm:mt-0'>
+                  <h3 className='text-gray-900 font-extrabold text-xl'>Presencia online</h3>
+                  <h4 className='text-gray-600 text-center text-base'>Ayeendo te permitirá crear tu propio sitio web de servicios para que tus pacientes puedan agendar contigo de forma automática.</h4>
+                </div>
               </div>
-            </div>
-            <div className='flex flex-col justify-center items-center w-full mb-6 sm:flex-row sm:justify-center sm:gap-8'>
-              <Image src="/organizacion.jpg" width={250} height={250} className='rounded-lg'/>
-              <div className='flex flex-col items-center justify-center w-full gap-3 mt-4 mb-8 sm:w-1/3 sm:mt-0 sm:mb-0'>
-                <h3 className='text-black font-bold text-2xl'>¡No más papel!</h3>
-                <h4 className='text-one-500 text-center text-lg'>Con ayeendo llevarás el control de tus citas de forma digital, mejorando la organización y evitando que tus pacientes esperen más de lo debido.</h4>
+              <div className='flex flex-col justify-center items-center w-full mb-6 sm:flex-row sm:justify-center sm:gap-8'>
+                <FaRegFileExcel className='text-8xl text-one-500'/>
+                <div className='flex flex-col items-center justify-center w-full gap-3 mt-4 sm:w-2/3 sm:mt-0'>
+                  <h3 className='text-gray-900 font-extrabold text-xl'>¡No más papel!</h3>
+                  <h4 className='text-gray-600 text-center text-base'>Con ayeendo llevarás el control de tus citas de forma digital, mejorando la organización y evitando que tus pacientes esperen más de lo debido.</h4>
+                </div>
               </div>
-            </div>
-            <div className='flex flex-col justify-center items-center w-full mb-6 sm:flex-row sm:justify-center sm:gap-8'>
-              <Image src="/organizacion.jpg" width={250} height={250} className='rounded-lg'/>
-              <div className='flex flex-col items-center justify-center w-full gap-3 mt-4 mb-8 sm:w-1/3 sm:mt-0 sm:mb-0'>
-                <h3 className='text-black font-bold text-2xl'>Envio de correos</h3>
-                <h4 className='text-one-500 text-center text-lg'>Una vez que tus pacientes agenden contigo o usted sea quien cree la cita, recibirán un correo de confirmación de la misma.</h4>
+              <div className='flex flex-col justify-center items-center w-full mb-6 sm:flex-row sm:justify-center sm:gap-8'>
+                <FiMail className='text-8xl text-one-500'/>
+                <div className='flex flex-col items-center justify-center w-full gap-3 mt-4 sm:w-2/3 sm:mt-0'>
+                  <h3 className='text-gray-900 font-extrabold text-xl'>Envio de correos</h3>
+                  <h4 className='text-gray-600 text-center text-base'>Una vez que tus pacientes agenden contigo o usted sea quien cree la cita, recibirán un correo de confirmación de la misma.</h4>
+                </div>
               </div>
-            </div>
-            <div className='flex flex-col justify-center items-center w-full mb-10 sm:flex-row sm:justify-center sm:gap-8'>
-              <Image src="/organizacion.jpg" width={250} height={250} className='rounded-lg'/>
-              <div className='flex flex-col items-center justify-center w-full gap-3 mt-4 mb-8 sm:w-1/3 sm:mt-0 sm:mb-0'>
-                <h3 className='text-black font-bold text-2xl'>Recordatorio por whatsapp</h3>
-                <h4 className='text-one-500 text-center text-lg'>1 día antes de la cita tus pacientes recibirán un recordatorio por whatsapp, así podrás disminuir el ausentismo en tu consultorio.</h4>
-              </div>  
-            </div>
+              <div className='flex flex-col justify-center items-center w-full mb-6 sm:flex-row sm:justify-center sm:gap-8'>
+                <FaWhatsapp className='text-8xl text-one-500'/>
+                <div className='flex flex-col items-center justify-center w-full gap-3 mt-4 sm:w-2/3 sm:mt-0'>
+                  <h3 className='text-gray-900 font-extrabold text-xl'>Recordatorio por whatsapp</h3>
+                  <h4 className='text-gray-600 text-center text-base'>1 día antes de la cita tus pacientes recibirán un recordatorio por whatsapp, así podrás disminuir el ausentismo en tu consultorio.</h4>
+                </div>  
+              </div>
+              <div className='flex flex-col justify-center items-center w-full mb-6 sm:flex-row sm:justify-center sm:gap-8'>
+                <FaRegAddressBook className='text-8xl text-one-500'/>
+                <div className='flex flex-col items-center justify-center w-full gap-3 mt-4 sm:w-2/3 sm:mt-0'>
+                  <h3 className='text-gray-900 font-extrabold text-xl'>Gestiona tus servicios</h3>
+                  <h4 className='text-gray-600 text-center text-base'>Podrás gestionar tus servicios y sus precios.</h4>
+                </div>  
+              </div>
+              <div className='flex flex-col justify-center items-center w-full mb-8 sm:flex-row sm:justify-center sm:gap-8'>
+                <FaRegCalendarCheck className='text-8xl text-one-500'/>
+                <div className='flex flex-col items-center justify-center w-full gap-3 mt-4 sm:w-2/3 sm:mt-0'>
+                  <h3 className='text-gray-900 font-extrabold text-xl'>Calendario online</h3>
+                  <h4 className='text-gray-600 text-center text-base'>Dispondrás de un calendario online, tus clientes podrán ver tu disponibilidad y agendar sus citas.</h4>
+                </div>  
+              </div>
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-evenly mt-8 mb-8 h-125 sm:h-115">
-          <div className='mb-4 text-center'>
+        <div className="flex flex-col items-center justify-evenly h-130 md:h-115">
+          <div className='mb-4 text-center p-4'>
             <h2 className='text-yellow-300 text-4xl font-semibold'>Haz visible tu agenda con AYEENDO  </h2>
           </div>
-          <div class="flex flex-col gap-3 sm:grid sm:grid-cols-4 sm:gap-3 px-4">
-            <div className='flex flex-col justify-center items-center bg-white p-4 rounded-xl'>
-              <h2 className='mb-4 font-bold text-center'><span className='p-2 rounded-full bg-yellow-300 mr-3'>1</span>Crea tus servicios y horarios</h2>
-              <FaListUl className='text-8xl text-one-500'/>
+          <div class="flex flex-col gap-3 md:grid md:grid-cols-4 md:gap-3 px-4">
+            <div className='flex flex-col justify-center items-start bg-white p-4 pb-8 rounded-xl'>
+              <div className='flex gap-2'>
+                <div>
+                  <span className='p-2 rounded-xl bg-yellow-300 w-10 text-center'>1</span>
+                </div>
+                <h2 className='flex justify-center items-center font-bold'>Crea tus servicios y horarios</h2>
+              </div>
+              <FaListUl className='text-8xl text-one-500 m-auto mt-4'/>
             </div>
-            <div className='flex flex-col justify-center items-center bg-white p-4 rounded-xl'>
-              <h2 className='mb-4 font-bold text-center'><span className='p-2 rounded-full bg-yellow-300 mr-3'>2</span>Comparte tu link</h2>
-              <FaLink className='text-8xl text-one-500'/>
+            <div className='flex flex-col justify-center items-start bg-white p-4 pb-8 rounded-xl'>
+              <div className='flex gap-2'>
+                <div>
+                  <span className='p-2 rounded-xl bg-yellow-300 w-10 text-center'>2</span>
+                </div>
+                <h2 className='flex justify-center items-center font-bold'>Comparte tu link</h2>
+              </div>
+              <FaLink className='text-8xl text-one-500 m-auto mt-4'/>
             </div>
-            <div className='flex flex-col justify-center items-center bg-white p-4 rounded-xl'>
-              <h2 className='mb-4 font-bold text-center'><span className='p-2 rounded-full bg-yellow-300 mr-3'>3</span>Tus pacientes podrán agendar</h2>
-              <FaCalendarCheck className='text-8xl text-one-500'/>
+            <div className='flex flex-col justify-center items-start bg-white p-4 pb-8 rounded-xl'>
+              <div className='flex gap-2'>
+                <div>
+                  <span className='p-2 rounded-xl bg-yellow-300 w-10 text-center'>3</span>
+                </div>
+                <h2 className='flex justify-center items-center font-bold'>Tus pacientes podrán agendar</h2>
+              </div>
+              <FaCalendarCheck className='text-8xl text-one-500 m-auto mt-4'/>
             </div>
-            <div className='flex flex-col justify-center items-center bg-white p-4 mb-8 rounded-xl sm:mb-0'>
-              <h2 className='mb-4 font-bold text-center'><span className='p-2 rounded-full bg-yellow-300 mr-3'>4</span>Confirmación de cita </h2>
-              <FaEnvelopeOpenText className='text-8xl text-one-500'/>
+            <div className='flex flex-col justify-center items-start bg-white p-4 pb-8 rounded-xl'>
+              <div className='flex gap-2'>
+                <div>
+                  <span className='p-2 rounded-xl bg-yellow-300 w-10 text-center'>4</span>
+                </div>
+                <h2 className='flex justify-center items-center font-bold'>Envío confirmación de cita </h2>
+              </div>
+              <FaEnvelopeOpenText className='text-8xl text-one-500 m-auto mt-4'/>
             </div>
           </div>
         </div>
 
+        <div className="flex flex-col items-center text-center bg-white text-black text-2xl pt-4 p-6 font-bold">
+            <div className='text-4xl mt-4'>
+              <h2>Precio</h2>
+            </div>
+            <div className='mt-10'>
+              <div className='flex gap-3'>
+                <div>
+                  <h2>Plan Mensual</h2>
+                </div>
+                <div>
+                  <h2>Plan Gratuito</h2>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div className="flex flex-col items-center text-center bg-two-500 text-black text-2xl pt-4 p-6 font-bold">
+            <div className='text-xl mt-4'>
+              <h2 className='text-black mb-4 '>Hecho con mucho <span className='text-red-500'>❤</span> en <span className='text-yellow-500'>VEN</span><span className='text-blue-500'>EZU</span><span className='text-red-500'>ELA</span></h2>
+              <h2 className='text-base'>© 2023 Ayeendo. All rights reserved.</h2>
+            </div>
+        </div>
 
       </div>
     </>

@@ -29,11 +29,12 @@ module.exports = {
     },
     screens: {
       sm: "680px",
-      md: "780px",
+      md: "850px",
       lg: "1024px",
       xl: "1280px",
     },
     height: {
+      130: "60rem",
       125: "50rem",
       120: "34rem",
       115: "27rem",
