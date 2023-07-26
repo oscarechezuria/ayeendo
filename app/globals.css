@@ -33,6 +33,6 @@ body {
     transform: translate(0);
 }
 100% {
-    transform: translatey(-50px);
+    transform: translatey(-100px);
 }
 }
