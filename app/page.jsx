@@ -1,14 +1,19 @@
+"use client"
 import Header from '@/components/Header'
-import { BsRocketTakeoff } from "react-icons/bs";
-import { FaLink, FaCalendarCheck, FaEnvelopeOpenText, FaListUl, FaLaptop, FaRegFileExcel, FaWhatsapp, FaRegAddressBook, FaRegCalendarCheck } from "react-icons/fa6";
+import { FaLink, FaCalendarCheck, FaEnvelopeOpenText, FaListUl, FaLaptop, FaRegFileExcel, FaWhatsapp, FaRegAddressBook, FaRegCalendarCheck, FaCheck } from "react-icons/fa6";
 import { FiMail } from "react-icons/fi"
 import Image from "next/image";
 import "@/app/page.module.css"
+import Footer from '@/components/Footer';
+import { useRouter } from 'next/navigation'
 
 /*#FFFF00*/
 
 //<BsRocketTakeoff className="animationFront invisible text-yellow-300 md:text-9xl md:visible"/>
 export default function Home() {
+
+  const router = useRouter()
+
   return (
     <>
       <Header/>
@@ -23,7 +28,7 @@ export default function Home() {
             <div className="flex flex-col items-start gap-2 mt-12">
               <h2 className="text-base text-white">Registrate y haz volar tu agenda con nosotros</h2>
               <div>
-                <button className="block bg-two-500 text-white font-normal text-lg p-3 rounded-lg">Registrarme Gratis</button>
+                <button onClick={() => router.push("/signup")} className="block bg-two-500 text-white font-normal text-lg p-3 rounded-lg">Registrarme Gratis</button>
               </div>
             </div>
           </div>
@@ -155,13 +160,13 @@ export default function Home() {
                   </div>
                   <div className='mt-8'>
                     <ul className='flex flex-col gap-4'>
-                      <li className='flex justify-start gap-4 text-xl text-gray-600'><span className='text-yellow-300 mr-4'>✔</span>Página web</li>
-                      <li className='flex justify-start gap-4 text-xl text-gray-600'><span className='text-yellow-300 mr-4'>✔</span>Calendario online</li>
-                      <li className='flex justify-start gap-4 text-xl text-gray-600'><span className='text-yellow-300 mr-4'>✔</span>Confirmación por email</li>
-                      <li className='flex justify-start gap-4 text-xl text-gray-600'><span className='text-yellow-300 mr-4'>✔</span>Notificación por whatsapp</li>
-                      <li className='flex justify-start gap-4 text-xl text-gray-600'><span className='text-yellow-300 mr-4'>✔</span>Gestión de pacientes</li>
-                      <li className='flex justify-start gap-4 text-xl text-gray-600'><span className='text-yellow-300 mr-4'>✔</span>Gestión de servicios</li>
-                      <li className='flex justify-start gap-4 text-xl text-gray-600'><span className='text-yellow-300 mr-4'>✔</span>Futuras actualizaciones</li>
+                      <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Página web</li>
+                      <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Calendario online</li>
+                      <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Confirmación por email</li>
+                      <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Notificación por whatsapp</li>
+                      <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Gestión de pacientes</li>
+                      <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Gestión de servicios</li>
+                      <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Futuras actualizaciones</li>
                     </ul>
                   </div>
                 </div>
@@ -175,11 +180,11 @@ export default function Home() {
                   </div>
                   <div className='mt-8'>
                     <ul className='flex flex-col gap-4'>
-                      <li className='flex justify-start gap-4 text-xl text-gray-600'><span className='text-yellow-300 mr-4'>✔</span>Página web</li>
-                      <li className='flex justify-start gap-4 text-xl text-gray-600'><span className='text-yellow-300 mr-4'>✔</span>Calendario online</li>
-                      <li className='flex justify-start gap-4 text-xl text-gray-600'><span className='text-yellow-300 mr-4'>✔</span>Gestión de pacientes</li>
-                      <li className='flex justify-start gap-4 text-xl text-gray-600'><span className='text-yellow-300 mr-4'>✔</span>Gestión de servicios</li>
-                      <li className='flex justify-start gap-4 text-xl text-gray-600'><span className='text-yellow-300 mr-4'>✔</span>Futuras actualizaciones</li>
+                      <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Página web</li>
+                      <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Calendario online</li>
+                      <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Gestión de pacientes</li>
+                      <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Gestión de servicios</li>
+                      <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Futuras actualizaciones</li>
                     </ul>
                   </div>
                 </div>
@@ -187,16 +192,7 @@ export default function Home() {
             </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-8 text-center min-h-100 bg-one-500 text-white text-2xl pt-4 p-6">
-            <div className='flex flex-col items-center justify-center w-3/5 '>
-              <h2 className='flex text-lg font-semibold mb-2'>AYENNDO</h2>
-              <p className='flex text-base'>Somos la plataforma que simplifica el encuentro entre pracientes y profesionales de la salud, automatizando todo el ciclo de agendamiento de citas.</p>
-            </div>
-            <div className='text-base mt-4'>
-              <h2 className='mb-2 '>Hecho con mucho <span className='text-red-500'>❤</span> en <span className='text-yellow-500'>VEN</span><span className='text-blue-500'>EZU</span><span className='text-red-500'>ELA</span></h2>
-              <h2>© 2023 Ayeendo. Todos los derechos reservados</h2>
-            </div>
-        </div>
+        <Footer/>
 
       </div>
     </>
