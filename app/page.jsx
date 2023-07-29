@@ -7,13 +7,14 @@ import "@/app/page.module.css"
 
 /*#FFFF00*/
 
+//<BsRocketTakeoff className="animationFront invisible text-yellow-300 md:text-9xl md:visible"/>
 export default function Home() {
   return (
     <>
       <Header/>
       <div className='bg-one-500'>
 
-        <div className="flex justify-start gap-14 items-center ml-10 h-120 p-4 text-white text-4xl sm:ml-28">
+        <div className="flex justify-start gap-12 items-center ml-4 h-120 p-4 text-white text-4xl sm:ml-28">
           <div>
             <div className="flex">
               <h2 className="text-5xl">Lleva tu <span className="text-yellow-300">consultorio</span> al siguiente nivel</h2>
@@ -26,8 +27,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className=" hidden md:block w-auto p-8">
-            <BsRocketTakeoff className="animationFront invisible text-yellow-300 md:text-9xl md:visible"/>
+          <div className="hidden md:block w-auto p-8">
+            <Image src="/principal.svg" width={600} height={300} className='animationFront rounded-full border-4 border-yellow-300'/>
           </div>
         </div>
 
@@ -150,7 +151,7 @@ export default function Home() {
                       <h2 className='text-start font-bold text-5xl mt-4'>7.99$</h2>
                       <span className='text-xl font-bold mt-9 ml-2'>/mes</span>
                     </div>
-                    <p className='text-start font-bold text-sm mt-3'>Incluye todo este paquete más soporte y todas las futuras actualizaciones</p>
+                    <p className='text-start font-bold text-sm mt-3'>Incluye todo este paquete más soporte y todas las futuras actualizaciones.</p>
                   </div>
                   <div className='mt-8'>
                     <ul className='flex flex-col gap-4'>
@@ -170,7 +171,7 @@ export default function Home() {
                     <div className='flex '>
                       <h2 className='text-start font-bold text-5xl mt-4'>0$</h2>
                     </div>
-                    <p className='text-start font-bold text-sm mt-3'>Queremos que vivas la experiencia ayeendo y digitalizes tus servicios de forma gratuita</p>
+                    <p className='text-start font-bold text-sm mt-3'>Queremos que vivas la experiencia ayeendo y digitalizes tus servicios de forma gratuita.</p>
                   </div>
                   <div className='mt-8'>
                     <ul className='flex flex-col gap-4'>
@@ -186,10 +187,14 @@ export default function Home() {
             </div>
         </div>
 
-        <div className="flex flex-col items-center text-center bg-one-500 text-black text-2xl pt-4 p-6 font-bold">
-            <div className='text-xl mt-4'>
-              <h2 className='text-black mb-4 '>Hecho con mucho <span className='text-red-500'>❤</span> en <span className='text-yellow-500'>VEN</span><span className='text-blue-500'>EZU</span><span className='text-red-500'>ELA</span></h2>
-              <h2 className='text-base'>© 2023 Ayeendo. Todos los derechos reservados</h2>
+        <div className="flex flex-col items-center justify-center gap-8 text-center min-h-100 bg-one-500 text-white text-2xl pt-4 p-6">
+            <div className='flex flex-col items-center justify-center w-3/5 '>
+              <h2 className='flex text-lg font-semibold mb-2'>AYENNDO</h2>
+              <p className='flex text-base'>Somos la plataforma que simplifica el encuentro entre pracientes y profesionales de la salud, automatizando todo el ciclo de agendamiento de citas.</p>
+            </div>
+            <div className='text-base mt-4'>
+              <h2 className='mb-2 '>Hecho con mucho <span className='text-red-500'>❤</span> en <span className='text-yellow-500'>VEN</span><span className='text-blue-500'>EZU</span><span className='text-red-500'>ELA</span></h2>
+              <h2>© 2023 Ayeendo. Todos los derechos reservados</h2>
             </div>
         </div>
 
