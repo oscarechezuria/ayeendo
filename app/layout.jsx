@@ -8,7 +8,7 @@ export const metadata = {
   description: 'Potenciar a los profesionales independiates de la salud con tecnología de calidad. Lleva tu consultorio al siguiente nivel',
 }
 
-export default function RootLayout({ children }) {
+export default function AdminLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>

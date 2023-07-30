@@ -33,7 +33,7 @@ export default function Home() {
             </div>
           </div>
           <div className="hidden md:block w-auto p-8">
-            <Image src="/principal.svg" width={600} height={300} className='animationFront rounded-full border-4 border-yellow-300'/>
+            <Image src="/principal.svg" alt='Ayeendo' width={600} height={300} className='animationFront rounded-full border-4 border-yellow-300'/>
           </div>
         </div>
 
@@ -103,7 +103,7 @@ export default function Home() {
           <div className='mb-4 text-center p-4'>
             <h2 className='text-yellow-300 text-4xl font-semibold'>Haz visible tu agenda con AYEENDO  </h2>
           </div>
-          <div class="flex flex-col gap-3 md:grid md:grid-cols-4 md:gap-3 px-4">
+          <div className="flex flex-col gap-3 md:grid md:grid-cols-4 md:gap-3 px-4">
             <div className='flex flex-col justify-center items-start bg-white p-4 pb-8 rounded-xl'>
               <div className='flex gap-2'>
                 <div>
