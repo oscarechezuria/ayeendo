@@ -43,14 +43,14 @@ const signup = () => {
         alert("Algo salio mal")
       }
     }
-    
+
   }
 
   return (
     <div>
       <Header/>
       
-      <div className='flex w-full mt-8'>
+      <div className='flex w-full mt-8 mb-12'>
             <div className='m-auto grid auto-cols-auto'>
               <div className='flex flex-col my-8'>
                   <h1 className='text-center text-2xl text-black font-semibold'>Registrarse</h1>
@@ -84,8 +84,8 @@ const signup = () => {
             </div>  
         </div>
 
-      <div className='absolute bottom-0 w-full'>
-      <Footer/>
+      <div className='md:absolute md:bottom-0 md:w-full'>
+        <Footer/>
       </div>
     </div>
   )
