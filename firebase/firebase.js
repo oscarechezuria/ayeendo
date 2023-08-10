@@ -2,6 +2,12 @@
 
 import { initializeApp, getApps } from "firebase/app";
 import {
+  getAuth,
+  signOut,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+
+import {
   getFirestore,
   collection,
   addDoc,
@@ -28,7 +34,35 @@ const firebaseConfig = {
 export const app =
   getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 
+export const auth = getAuth(app);
 export const db = getFirestore(app);
+
+export async function userExists(uid) {
+  const docRef = doc(db, "users", uid);
+  const res = await getDoc(docRef);
+  //console.log(res)
+  return res.exists();
+}
+
+export async function getInfoUser(uid) {
+  const docRef = doc(db, "users", uid);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    return docSnap.data();
+  } else {
+    console.log("No such document!");
+  }
+}
+
+export async function registerNewUser(user) {
+  try {
+    const collectionRef = collection(db, "users");
+    const docRef = doc(collectionRef, user.uid);
+    await setDoc(docRef, user);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export async function getUsers(uid) {
   const users = [];
@@ -45,16 +79,6 @@ export async function getUsers(uid) {
     return users;
   } catch (error) {
     console.log(error);
-  }
-}
-
-export async function getUserInfo(uid) {
-  const docRef = doc(db, "users", uid);
-  const docSnap = await getDoc(docRef);
-  if (docSnap.exists()) {
-    return docSnap.data();
-  } else {
-    console.log("No such document!");
   }
 }
 

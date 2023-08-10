@@ -33,7 +33,7 @@ export default function Home() {
             </div>
           </div>
           <div className="hidden md:block w-auto p-8">
-            <Image src="/principal.svg" alt='Ayeendo' width={600} height={300} className='animationFront rounded-full border-4 border-yellow-300'/>
+            <Image src="/principal.svg" alt='Ayeendo' priority={true} width={600} height={300} className='animationFront rounded-full border-4 border-yellow-300'/>
           </div>
         </div>
 

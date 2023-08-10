@@ -2,7 +2,7 @@
 
 import { usePathname, useSearchParams } from 'next/navigation'
 import React, {useEffect, useState} from 'react'
-import {getUsers, existsUserName, getUserInfo} from "../../firebase/firebase"
+import {getUsers, existsUserName, getInfoUser} from "../../firebase/firebase"
 
 
 export default function page() {
@@ -32,7 +32,7 @@ export default function page() {
         console.log(currentId)
         const infoCurrentUser = await getUsers(currentId)
         setInfoUser(infoCurrentUser)
-        const getInfo = await getUserInfo("Kjst2tLQONoRV3ooPnOQ")
+        const getInfo = await getInfoUser("Kjst2tLQONoRV3ooPnOQ")
         setGetInfoUser(getInfo)
         
     }
