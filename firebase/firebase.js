@@ -64,6 +64,30 @@ export async function registerNewUser(user) {
   }
 }
 
+export async function updateUser(user) {
+  try {
+    const collectionRef = collection(db, "users");
+    const docRef = doc(collectionRef, user.uid);
+    await setDoc(docRef, user);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function existsUserName(username) {
+  const users = [];
+  const docsRef = collection(db, "users"); //minuto 1:12:30
+  const q = query(docsRef, where("username", "==", username));
+
+  const querySnapshot = await getDocs(q);
+
+  querySnapshot.forEach((doc) => {
+    users.push(doc.data());
+  });
+
+  return users.length > 0 ? users[0].uid : null;
+}
+
 export async function getUsers(uid) {
   const users = [];
   try {
@@ -80,18 +104,4 @@ export async function getUsers(uid) {
   } catch (error) {
     console.log(error);
   }
-}
-
-export async function existsUserName(username) {
-  const users = [];
-  const docsRef = collection(db, "users"); //minuto 1:12:30
-  const q = query(docsRef, where("usuario", "==", username));
-
-  const querySnapshot = await getDocs(q);
-
-  querySnapshot.forEach((doc) => {
-    users.push(doc.data());
-  });
-
-  return users.length > 0 ? users[0].uid : null;
 }

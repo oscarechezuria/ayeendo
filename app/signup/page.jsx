@@ -7,7 +7,6 @@ import { useRouter } from 'next/navigation'
 import { auth } from "@/firebase/firebase"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import AuthProvider from '@/components/AuthProvider'
-import {useContextGlobal} from "@/context/GlobalContext"
 import RegisterUser from '@/components/stepRegister/RegisterUser'
 
 
@@ -16,9 +15,6 @@ const signup = () => {
 
   const router = useRouter()
   const [state, setState] = useState(0)
-  const {currentUser, setCurrentUser} = useContextGlobal()
-
-  //console.log(currentUser)
 
 
   const initialStateValues = {
@@ -36,7 +32,6 @@ const signup = () => {
           setvalues({...values,
                   [name]: value 
           });
-          console.log(values)
   }
 
   async function submitHandler(e){

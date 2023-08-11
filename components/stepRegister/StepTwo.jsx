@@ -26,7 +26,7 @@ export default function StepTwo() {
   return (
     <div className='flex flex-col items-center gap-4 p-2'>
 
-        <div className='flex flex-col justify-center gap-2 items-center mt-8 text-xl text-one-500 font-bold'>
+        <div className='flex flex-col justify-center gap-2 items-center mt-4 text-xl text-one-500 font-bold'>
           <h2>Ya casi estamos listo!!!</h2>
           <h2>Ahora</h2>
         </div>

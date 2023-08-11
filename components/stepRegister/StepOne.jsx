@@ -1,12 +1,36 @@
 "use client"
 import React, { useState } from 'react'
 import { useContextGlobal } from '@/context/GlobalContext'
+import { existsUserName, updateUser } from '@/firebase/firebase'
 
 export default function stepOne() {
 
     const [username, setUsername] = useState("")
 
-    const {currentUser, stepRegister, setStepRegister} = useContextGlobal()
+    const {setStepRegister, stepRegister, infoUser} = useContextGlobal()
+
+    const handleInputListo = async () => {
+      if (username !== "") {
+
+        const exists =  await existsUserName(username)
+
+        if (exists) {
+          console.log("Este nombre de usuario ya existe por favor escoga otro")
+        }else{
+          const copyInfotUser = {...infoUser}
+          copyInfotUser.username = username
+          copyInfotUser.processCompleted = true
+          setStepRegister(stepRegister + 1)
+          await updateUser(copyInfotUser)
+          console.log(copyInfotUser)
+
+
+        }
+
+      }else{
+        console.log("Por escribe un nombre de usuario")
+      }
+    }
 
 
 
@@ -22,7 +46,7 @@ export default function stepOne() {
         </div>
 
         <div className='my-8'>
-            <button onClick={() => setStepRegister(stepRegister + 1)} className='bg-yellow-300 rounded-lg p-2 w-32 font-semibold'>{stepRegister === 1  ? "Siguiente" : "Listo"}</button>
+            <button onClick={handleInputListo} className='bg-yellow-300 rounded-lg p-2 w-32 font-semibold'>{stepRegister === 1  ? "Siguiente" : "Listo"}</button>
         </div>
 
     </div>  
