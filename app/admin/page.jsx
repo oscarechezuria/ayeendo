@@ -3,7 +3,9 @@ import React from 'react'
 
 function admin() {
   return (
-    <div>Estoy en el dashboard</div>
+    <div>
+      <div>Estoy en el dashboard</div>
+    </div>
   )
 }
 

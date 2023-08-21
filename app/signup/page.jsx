@@ -74,13 +74,13 @@ const signup = () => {
   if (state === 4){
 
   return (
-    <div>
+    <div className='flex flex-col min-h-screen'>
       <Header/>
       
-      <div className='flex w-full mt-8 mb-12'>
+        <div className='flex w-full mt-auto mb-12'>
             <div className='m-auto grid auto-cols-auto'>
               <div className='flex flex-col my-8'>
-                  <h1 className='text-center text-2xl text-black font-semibold'>Registrarse</h1>
+                  <h1 className='text-center text-2xl text-one-500 font-bold'>Registrarse</h1>
               </div>
   
               <form className='flex flex-col w-full' onSubmit={submitHandler}>
@@ -111,9 +111,8 @@ const signup = () => {
             </div>  
         </div>
 
-      <div className='absolute bottom-0 w-full'>
         <Footer/>
-      </div>
+
     </div>
   )
 }

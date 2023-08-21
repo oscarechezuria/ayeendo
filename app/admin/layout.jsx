@@ -1,11 +1,15 @@
+import Footer from '@/components/Footer'
 import HeaderAdmin from '@/components/HeaderAdmin'
 import React from 'react'
 
-function layoutAdmin({children}) {
+function layoutAdmin() {
   return (
-    <div>
+    <div className='flex flex-col min-h-screen'>
         <HeaderAdmin/>
-        {children}
+          <div>
+            <h2>Hola estamos en el dashboard</h2>
+          </div>
+        <Footer/>
     </div>
   )
 }

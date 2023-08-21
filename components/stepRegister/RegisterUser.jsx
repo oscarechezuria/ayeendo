@@ -11,8 +11,6 @@ export default function RegisterUser() {
 
     const {stepRegister} = useContextGlobal()
 
-
-
     return (
     <div>
         <header className='flex flex-col justify-between bg-one-500 py-4 px-8 text-white font-medium text-lg md:flex md:flex-row'>

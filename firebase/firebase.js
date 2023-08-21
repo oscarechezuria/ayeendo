@@ -105,3 +105,17 @@ export async function getUsers(uid) {
     console.log(error);
   }
 }
+
+export async function logout() {
+  return signOut(auth);
+}
+
+export async function insertAutomaticServices(services) {
+  try {
+    const docRef = collection(db, "automaticServices");
+    const res = await addDoc(docRef, services);
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+}

@@ -16,11 +16,11 @@ export default function StepTwo() {
 
     const handleStepTwo = () => {
       setStepRegister(stepRegister + 1)
-      router.push("admin")
+      router.push("/admin")
 
     }
 
-
+//ALERTA POR FAVOR RESETIAR EL STEPREGISTER A CERO PARA QUE AL REGISTRAR OTRO USUARIO COMIENCE EL CONTEO DESDE CERO
 
 
   return (

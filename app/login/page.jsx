@@ -40,7 +40,6 @@ const login = () => {
       const correo = values.email
       const contraseña = values.password
       const login = await signInWithEmailAndPassword(auth, correo, contraseña)
-      router.push("/registerUser")
     } catch (error) {
       console.log(error.message)
       //console.log(error.code)
@@ -74,13 +73,13 @@ const login = () => {
 
   if (state === 4) {
     return(
-          <div>
+          <div className='flex flex-col min-h-screen'>
               <Header/>
             
-              <div className='flex w-full mt-8 mb-12'>
+              <div className='flex w-full m-auto mb-12'>
                   <div className='m-auto grid auto-cols-auto'>
                     <div className='flex flex-col my-8'>
-                        <h1 className='text-center text-2xl text-black font-semibold'>Inicio de Sesión</h1>
+                        <h1 className='text-center text-2xl text-one-500 font-bold'>Inicio de Sesión</h1>
                     </div>
         
                     <form className='flex flex-col w-full' onSubmit={submitHandler}>
@@ -112,9 +111,7 @@ const login = () => {
                   </div>  
               </div>
         
-                <div className='md:absolute md:bottom-0 md:w-full'>
-                  <Footer/>
-                </div>
+              <Footer/>
           </div>
     )
   }
