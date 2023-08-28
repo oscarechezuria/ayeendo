@@ -13,7 +13,6 @@ export default function stepOne() {
 
 
 
-
     const handleInputListo = async (e) => {
       e.preventDefault()
 
@@ -66,7 +65,7 @@ export default function stepOne() {
 
           <div className='flex justify-center my-8'>
               <button type='submit' className='bg-yellow-300 rounded-lg p-2 w-32 font-semibold'>{stepRegister === 1  ? "Siguiente" : "Listo"}</button>
-          </div>
+          </div>  
         </form>
 
 

@@ -10,6 +10,7 @@ import Footer from '../Footer'
 export default function RegisterUser() {
 
     const {stepRegister} = useContextGlobal()
+    console.log(stepRegister)
 
     return (
     <div>
@@ -27,7 +28,7 @@ export default function RegisterUser() {
 
             {
                 stepRegister < 3 
-                ?
+                &&
                 <div className='flex flex-col gap-4'>
                     {
                         stepRegister === 1 
@@ -37,10 +38,6 @@ export default function RegisterUser() {
                         <StepTwo/>
                         
                     }
-                </div>
-                :
-                <div className='flex justify-center mt-14 text-2xl font-bold'>
-                    Estamos cargando tu sesión
                 </div>
             }
         </div>

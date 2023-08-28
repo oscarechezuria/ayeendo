@@ -3,20 +3,24 @@ import { logout } from '@/firebase/firebase'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import {FaCalendarAlt, FaGripVertical, FaUserEdit, FaHandPointLeft,FaBars, FaClock, FaUsers} from "react-icons/fa"
+import { useContextGlobal } from '@/context/GlobalContext'
 import { useRouter } from 'next/navigation'
 
 
 export default function HeaderAdmin() {
 
-  const [open, setOpen] = useState(false)
+    const {setStepRegister} = useContextGlobal()
 
-  const router = useRouter()
+    const [open, setOpen] = useState(false)
 
-  async function handleLogout() {
+    const router = useRouter()
+
+    async function handleLogout() {
 
     try {
         await logout()
             router.push('/')
+            setStepRegister(1)
     
         } catch (error) {
         console.log(error)
@@ -76,5 +80,5 @@ return (
             </div>
         </nav>
     </header>
-  )
+)
 }

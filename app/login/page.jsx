@@ -106,7 +106,10 @@ const login = () => {
                         </div>
                         <Link href={"/"} className='text-sm mb-2'>He olvidado mi contraseña</Link>
                         <Link href={"/signup"} className='text-sm mb-6'>Aún no tengo cuenta</Link>
-                        <button type='submit' className='rounded-xl text-center text-lg text-black bg-two-500 py-2 px-4 hover:bg-yellow-500 duration-500'>Iniciar Sesión</button>
+                        <button type='submit' 
+                                className='rounded-xl text-center text-lg text-black bg-two-500 py-2 px-4 hover:bg-yellow-500 duration-500'>
+                                Iniciar Sesión
+                        </button>
                     </form>
                   </div>  
               </div>

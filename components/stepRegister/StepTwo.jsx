@@ -8,17 +8,15 @@ import { useRouter } from 'next/navigation'
 export default function StepTwo() {
 
 
-  const {currentUser, stepRegister, setStepRegister} = useContextGlobal()
-
+  const {stepRegister} = useContextGlobal()
   const router = useRouter()
 
     //console.log(currentUser)
 
     const handleStepTwo = () => {
-      setStepRegister(stepRegister + 1)
       router.push("/admin")
-
     }
+    
 
 //ALERTA POR FAVOR RESETIAR EL STEPREGISTER A CERO PARA QUE AL REGISTRAR OTRO USUARIO COMIENCE EL CONTEO DESDE CERO
 
@@ -37,7 +35,10 @@ export default function StepTwo() {
         </div>
 
         <div className='my-8'>
-            <button onClick={handleStepTwo} className='bg-yellow-300 rounded-lg p-2 w-32 font-semibold'>{stepRegister === 1  ? "Siguiente" : "Listo"}</button>
+            <button 
+              onClick={handleStepTwo} 
+              className='bg-yellow-300 rounded-lg p-2 w-32 font-semibold'>{stepRegister === 1  ? "Siguiente" : "Listo"}
+            </button>
         </div>
 
     </div>

@@ -15,14 +15,16 @@ export default function AuthProvider({children, onUserLoggedIn, onUserNotLoggedI
 
             if(user){
 
+                // si user es true me lo colocas en el estado global
                 setCurrentUser(user)
-                console.log(user)
+
                 const isRegistered = await userExists(user.uid)
+                
+                //si user esta registrado entras sino registras al usuario
 
                 if (isRegistered) {
                     const infoUser = await getInfoUser(user.uid)
                     setInfoUser(infoUser)
-                    console.log(infoUser)
 
                     if (!infoUser.processCompleted) {
                         onUserNotRegistered(user)
@@ -40,7 +42,7 @@ export default function AuthProvider({children, onUserLoggedIn, onUserNotLoggedI
                     
                     const info = await getInfoUser(user.uid)
                     setInfoUser(info)
-                    console.log(info)
+                    
                 }
 
 

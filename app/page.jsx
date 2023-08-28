@@ -145,7 +145,7 @@ export default function Home() {
 
         <div className="flex flex-col items-center text-center bg-white text-black text-2xl pt-4 p-6 font-bold">
             <div className='text-4xl mt-4'>
-              <h2>Precio</h2>
+              <h2>¿Que te ofrece AYEENDO?</h2>
             </div>
             <div className='mt-10'>
               <div className='flex flex-col gap-6 sm:flex md:flex-row'>
