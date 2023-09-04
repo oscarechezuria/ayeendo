@@ -1,12 +1,19 @@
-"use cient"
+"use client"
 import React from 'react'
 
+
 function admin() {
-  return (
-    <div>
-      <div>Estoy en el dashboard</div>
-    </div>
-  )
-}
+
+          return(
+            <div>
+              <h2>
+                Hola estamos en el dashboard
+              </h2>
+            </div>
+
+    )
+    }
+
+
 
 export default admin

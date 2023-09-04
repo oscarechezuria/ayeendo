@@ -11,15 +11,11 @@ export default function StepTwo() {
   const {stepRegister} = useContextGlobal()
   const router = useRouter()
 
-    //console.log(currentUser)
 
     const handleStepTwo = () => {
       router.push("/admin")
     }
     
-
-//ALERTA POR FAVOR RESETIAR EL STEPREGISTER A CERO PARA QUE AL REGISTRAR OTRO USUARIO COMIENCE EL CONTEO DESDE CERO
-
 
   return (
     <div className='flex flex-col items-center gap-4 p-2'>

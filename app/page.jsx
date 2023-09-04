@@ -7,6 +7,7 @@ import "@/app/page.module.css"
 import Footer from '@/components/Footer';
 import { useRouter } from 'next/navigation'
 
+
 /*#FFFF00*/
 
 //<BsRocketTakeoff className="animationFront invisible text-yellow-300 md:text-9xl md:visible"/>
@@ -192,7 +193,7 @@ export default function Home() {
             </div>
         </div>
 
-            <Footer/>
+        <Footer/>
 
       </div>
     </>
