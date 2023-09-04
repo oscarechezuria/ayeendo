@@ -13,14 +13,14 @@ export default function RegisterUser() {
     console.log(stepRegister)
 
     return (
-    <div>
-        <header className='flex flex-col justify-between bg-one-500 py-4 px-8 text-white font-medium text-lg md:flex md:flex-row'>
-        <div className='flex justify-between items-center'>
-            <Link href={"/"} className='flex justify-start text-yellow-300 text-4xl font-bold text-start'>AYEENDO</Link>
-        </div>
+    <div className='flex flex-col min-h-screen'>
+        <header className='flex flex-col justify-between bg-one-500 py-4 px-8 mb-12 text-white font-medium text-lg md:flex md:flex-row'>
+            <div className='flex justify-between items-center'>
+                <Link href={"/"} className='flex justify-start text-yellow-300 text-4xl font-bold text-start'>AYEENDO</Link>
+            </div>
         </header>
 
-        <div className='mt-14 sm:mt-20'>
+        <div className='m-auto'>
 
             <div className='flex justify-center text-2xl font-semibold'>
                 <h2>¡Bienvenido!</h2>
@@ -43,7 +43,7 @@ export default function RegisterUser() {
         </div>
 
         <Footer/>
-        
+
     </div>
 )
 }
