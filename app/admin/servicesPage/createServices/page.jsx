@@ -4,10 +4,15 @@ import StepOne from '@/components/servicesfile/StepOne'
 import StepTwo from '@/components/servicesfile/StepTwo'
 import { useRouter } from 'next/navigation' 
 import { usePathname } from 'next/navigation'
+import { useContextGlobal } from '@/context/GlobalContext'
+import {v4 as uuidv4} from "uuid"
+import { insertNewService } from '@/firebase/firebase'
 
 export default function createServices() {
+
     const pathname = usePathname()
-    console.log(pathname)
+
+    const {currentUser, setAllServices} = useContextGlobal()
 
     const initialService = {
         name: "",
@@ -16,24 +21,6 @@ export default function createServices() {
         description: "",
         statusPrice: false
     }
-
-    const pruebaApiStepOne = {
-        name: "dfgh",
-        price: "",
-        duration: "",
-        description: "",
-        statusPrice: false
-    }
-
-    const pruebaApiStepTwo = {
-        name: "dfgsssdff",
-        price: "",
-        duration: "",
-        description: "",
-        statusPrice: false
-    }
-
-
 
     const initialState = [
         {name: "Lunes", state: false, hours: []},  
@@ -47,17 +34,27 @@ export default function createServices() {
 
     const router = useRouter()
 
-    const [stepOne, setStepOne] = useState(pathname === "/admin/servicesPage/createServices" ? initialService : pruebaApiStepOne)
-    const [stepTwo, setStepTwo] = useState(pathname === "/admin/servicesPage/createServices" ? initialState : pruebaApiStepTwo)
-    console.log(stepOne)
-    console.log(stepTwo)
+    const [stepOne, setStepOne] = useState(pathname === "/admin/servicesPage/createServices" ? initialService : null)
+    const [stepTwo, setStepTwo] = useState(pathname === "/admin/servicesPage/createServices" ? initialState : null)
+
 
     const [step, setStep] = useState("1")
 
     const handleForm = () => {
         
-        console.log("Enviar a la BD la información del estado stepOne y StepTwo")
-        router.push("/admin/servicesPage")
+        const newService = {
+            id: uuidv4(),
+            service: stepOne,
+            timetable: stepTwo,
+            uid: currentUser.uid
+        }
+
+        const res = insertNewService(newService);
+        newService.docId = res.id
+        setAllServices(newService)
+
+        console.log("informacion enviada con exito")
+        router.push("/admin/servicesPage") 
             
         
     }
@@ -87,17 +84,17 @@ export default function createServices() {
                 ?
                     <div className='flex justify-center'>
                         <button 
-                            className='w-80 bg-two-500 rounded-lg text-white p-2 text-xl focus:outline-none mb-14 mt-4'
+                            className='w-80 bg-two-500 hover:bg-two-600 rounded-lg text-white p-2 text-xl focus:outline-none mb-14 mt-4'
                             onClick={() => setStep("2")}
                         >
                             Siguiente
                         </button>
                     </div>
                 :
-                <div className='flex justify-center gap-4'>
+                <div className='flex justify-center flex-col-reverse gap-4 sm:flex-row'>
                     <div className='flex justify-center'>
                         <button 
-                            className='w-60 bg-two-500 rounded-lg text-white p-2 text-xl focus:outline-none mb-14 mt-4'
+                            className='w-60 bg-two-500 hover:bg-two-600 rounded-lg text-white p-2 text-xl focus:outline-none mb-8 sm:mb-14 sm:mt-4'
                             onClick={() => setStep("1")}
                         >
                             Atras
@@ -105,7 +102,7 @@ export default function createServices() {
                     </div>
                     <div className='flex justify-center'>
                         <button 
-                            className='w-60 bg-two-500 rounded-lg text-white p-2 text-xl focus:outline-none mb-14 mt-4'
+                            className='w-60 bg-one-500 hover:opacity-90 rounded-lg text-white p-2 text-xl focus:outline-none mb-0 mt-4 sm:mb-14'
                             onClick={handleForm}
                         >
                             Crear Servicio

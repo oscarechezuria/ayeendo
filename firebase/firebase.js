@@ -110,11 +110,33 @@ export async function logout() {
   return signOut(auth);
 }
 
-export async function insertAutomaticServices(services) {
+//// Registrar servicios
+
+export async function insertNewService(newService) {
   try {
-    const docRef = collection(db, "automaticServices");
-    const res = await addDoc(docRef, services);
+    const docRef = collection(db, "service");
+    const res = await addDoc(docRef, newService);
     return res;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//// Obtener todos los servicios
+
+export async function getAllServices(uid) {
+  const users = [];
+  try {
+    const collectionRef = collection(db, "service");
+    const q = query(collectionRef, where("uid", "==", uid));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      const user = { ...doc.data() };
+      user.docId = doc.id;
+      users.push(user);
+    });
+
+    return users;
   } catch (error) {
     console.log(error);
   }

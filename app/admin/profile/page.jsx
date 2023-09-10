@@ -19,7 +19,7 @@ export default function Profile() {
       address:"a"
     }
   )
-  console.log(valores)
+  //console.log(valores)
 
   return(
   <>

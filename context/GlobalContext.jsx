@@ -15,6 +15,7 @@ export default function GlobalProvider({children}) {
     const [currentUser, setCurrentUser] = useState({})
     const [infoUser, setInfoUser] = useState({})
     const [stepRegister, setStepRegister] = useState(1)
+    const [allServices, setAllServices] = useState([])
 
     return (
         <GlobalContext.Provider value={{
@@ -23,7 +24,9 @@ export default function GlobalProvider({children}) {
             infoUser,
             setInfoUser, 
             stepRegister, 
-            setStepRegister
+            setStepRegister,
+            allServices,
+            setAllServices
             }}>
             {children}
         </GlobalContext.Provider>
