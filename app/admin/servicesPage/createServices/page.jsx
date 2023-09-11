@@ -12,7 +12,7 @@ export default function createServices() {
 
     const pathname = usePathname()
 
-    const {currentUser, setAllServices} = useContextGlobal()
+    const {currentUser, allServices, setAllServices} = useContextGlobal()
 
     const initialService = {
         name: "",
@@ -44,14 +44,14 @@ export default function createServices() {
         
         const newService = {
             id: uuidv4(),
-            service: stepOne,
+            infoService: stepOne,
             timetable: stepTwo,
             uid: currentUser.uid
         }
 
         const res = insertNewService(newService);
         newService.docId = res.id
-        setAllServices(newService)
+        setAllServices([...allServices, newService])
 
         console.log("informacion enviada con exito")
         router.push("/admin/servicesPage") 

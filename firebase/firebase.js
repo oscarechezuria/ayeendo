@@ -114,7 +114,7 @@ export async function logout() {
 
 export async function insertNewService(newService) {
   try {
-    const docRef = collection(db, "service");
+    const docRef = collection(db, "services");
     const res = await addDoc(docRef, newService);
     return res;
   } catch (error) {
@@ -125,18 +125,63 @@ export async function insertNewService(newService) {
 //// Obtener todos los servicios
 
 export async function getAllServices(uid) {
-  const users = [];
+  const services = [];
   try {
-    const collectionRef = collection(db, "service");
+    const collectionRef = collection(db, "services");
     const q = query(collectionRef, where("uid", "==", uid));
     const querySnapshot = await getDocs(q);
+
     querySnapshot.forEach((doc) => {
-      const user = { ...doc.data() };
-      user.docId = doc.id;
-      users.push(user);
+      const service = { ...doc.data() };
+      service.docId = doc.id;
+      services.push(service);
     });
 
-    return users;
+    return services;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Obtener info de un servicio
+
+export async function getInfoService(id) {
+  const infoService = [];
+  try {
+    const collectionRef = collection(db, "services");
+    const q = query(collectionRef, where("id", "==", id));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      const service = { ...doc.data() };
+      service.docId = doc.id;
+      infoService.push(service);
+    });
+
+    return infoService;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Actualizar un servicio
+
+export async function updateService(docId, data) {
+  try {
+    const docRef = doc(db, "services", docId);
+    const res = await setDoc(docRef, data);
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// eliminar un servicio
+
+export async function deletedService(docId) {
+  try {
+    const docRef = doc(db, "services", docId);
+    const res = await deleteDoc(docRef);
+    return res;
   } catch (error) {
     console.log(error);
   }

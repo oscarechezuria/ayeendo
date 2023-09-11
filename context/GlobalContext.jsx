@@ -1,5 +1,7 @@
 "use client"
-import React, {createContext, useContext, useState} from 'react'
+import React, {createContext, useContext, useState, useEffect} from 'react'
+import { getAllServices } from '@/firebase/firebase'
+
 
 export const GlobalContext = createContext()
 
@@ -16,6 +18,17 @@ export default function GlobalProvider({children}) {
     const [infoUser, setInfoUser] = useState({})
     const [stepRegister, setStepRegister] = useState(1)
     const [allServices, setAllServices] = useState([])
+
+
+
+    useEffect( () => {
+        async function data() {
+            const res = await getAllServices(currentUser.uid)
+            setAllServices(res)
+        }
+        data()
+    }, [currentUser])
+
 
     return (
         <GlobalContext.Provider value={{

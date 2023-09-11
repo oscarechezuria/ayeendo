@@ -4,16 +4,16 @@ import {FaCompressArrowsAlt} from "react-icons/fa"
 import Link from 'next/link'
 import { FaMoneyBillAlt, FaClock } from "react-icons/fa"
 import { useContextGlobal } from '@/context/GlobalContext'
-
-import { getAllServices } from '@/firebase/firebase'
-
+import { getAllServices, deletedService } from '@/firebase/firebase'
+import { useRouter } from 'next/navigation'
 
 export default function servicesPage() {
-
+    
     const {currentUser, allServices, setAllServices} = useContextGlobal()
     const [preload, setPreload] = useState(false)
     const [exp, setExp] = useState(true)
-    console.log(allServices)
+
+    const router = useRouter()
 
     useEffect( () => {
         async function data() {
@@ -31,8 +31,10 @@ export default function servicesPage() {
     }
 
 
-    const handleDelete = (e, index) => {
+    const handleDelete = async (e, index) => {
         const copyAllServices = [...allServices]
+        const docDeleted =  copyAllServices[index]
+        await deletedService(docDeleted.docId)
         copyAllServices.splice(index, 1)
         setAllServices(copyAllServices)
     }
@@ -79,15 +81,15 @@ export default function servicesPage() {
                                     <div className='flex justify-center px-6'>
                                         <div className='flex flex-col justify-center p-4 mb-4 border rounded-lg sm:flex-row'>
                                         <div className='p-2 boder-r-0 sm:border-r-2'>
-                                            <p className='h-auto break-words w-52'>{item.service.name}</p>
+                                            <p className='h-auto break-words w-52'>{item.infoService.name}</p>
                                         </div>
                                         <div className='flex justify-center p-2 w-24 items-center boder-r-0 sm:border-r-2'>
                                             <FaMoneyBillAlt className='text-two-500 mr-2'/>
-                                            <h2>{`${item.service.price} $`}</h2>
+                                            <h2>{`${item.infoService.price} $`}</h2>
                                         </div>
                                         <div className='flex justify-center p-2 w-24 items-center'>
                                             <FaClock className='text-two-500 mr-2'/>
-                                            <h2>{item.service.duration}</h2>
+                                            <h2>{item.infoService.duration}</h2>
                                         </div>
                                         <div className='flex justify-center items-center ml-0 sm:ml-8'>
                                             <div className='mr-4'>

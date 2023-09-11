@@ -91,7 +91,7 @@ export default function StepOne({stepOne, setStepOne}) {
                         </select>
                     </div>
                     <div className='flex flex-col'>
-                        <label htmlFor="desciption" className='mb-1 text-one-500 font-medium'>Descripción</label>
+                        <label htmlFor="description" className='mb-1 text-one-500 font-medium'>Descripción</label>
                         <textarea
                             required 
                             name="description" 
