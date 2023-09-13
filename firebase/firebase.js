@@ -20,6 +20,14 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  getBytes,
+} from "firebase/storage";
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -36,6 +44,7 @@ export const app =
 
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+export const storage = getStorage(app);
 
 export async function userExists(uid) {
   const docRef = doc(db, "users", uid);
@@ -182,6 +191,31 @@ export async function deletedService(docId) {
     const docRef = doc(db, "services", docId);
     const res = await deleteDoc(docRef);
     return res;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// subir foto se perfil
+
+export async function setUserProfilePhoto(uid, file) {
+  try {
+    const imageRef = ref(storage, `images/${uid}`);
+    const resUpload = uploadBytes(imageRef, file);
+    return resUpload;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//Obtener una foto
+
+export async function getProfilePhotoUrl(profilePicture) {
+  try {
+    const imageRef = ref(storage, profilePicture);
+    const url = await getDownloadURL(imageRef);
+    console.log(url);
+    return url;
   } catch (error) {
     console.log(error);
   }

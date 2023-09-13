@@ -1,32 +1,42 @@
 "use client"
 
-import { usePathname, useSearchParams } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import React, {useEffect, useState} from 'react'
-import {getUsers, existsUserName, getInfoUser} from "../../firebase/firebase"
+import {getUsers, existsUserName, getProfilePhotoUrl} from "../../firebase/firebase"
 
 
 export default function page() {
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const pathname = usePathname()
-    //console.log(pathname)
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const searchParams = useSearchParams(pathname)
+
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [infoUser, setInfoUser] = useState({})
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [getinfoUser, setGetInfoUser] = useState({})
+    const [profileUrl, setProfileUrl] = useState(null)
 
+    const params = useParams()
+    const username = params.username
+    
 
-    const username = "oechezuria"
-
-
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         catchUid(username)
     }, [username]);
     
     
+    const catchUid = async (username) => {
+        const currentId = await existsUserName(username)
+        const infoCurrentUser = await getUsers(currentId)
+        const infoUser = infoCurrentUser[0]
+        const url = await getProfilePhotoUrl(infoUser.profilePicture);
+        setProfileUrl(url)
+        
+    }
+
+
+    /* eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+        catchUid(username)
+    }, [username]);
+    
+    /*
     const catchUid = async (username) => {
         const currentId = await existsUserName(username)
         console.log(currentId)
@@ -36,15 +46,21 @@ export default function page() {
         setGetInfoUser(getInfo)
         
     }
-    console.log(infoUser)
-    console.log(getinfoUser)
-
-    
+    */
 
 
     return (
         <>
         <div>Estoy en la pagina dinamica</div>
+        <div className='flex flex-col items-center justify-center mt-6'>
+        <div>
+            <div>
+            <div className='mt-2'>
+                <img src={profileUrl} alt="" width={130} height={130} className='m-auto rounded-full'/>
+            </div>
+        </div>
+        </div>
+        </div>
         </>
 
 )

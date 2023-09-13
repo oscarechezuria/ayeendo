@@ -1,11 +1,65 @@
 "use client"
-import React, {useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import {Formik, Field, Form, ErrorMessage} from "formik"
 import * as Yup from "yup"
 import Link from 'next/link'
+import { setUserProfilePhoto, updateUser, getProfilePhotoUrl } from '@/firebase/firebase'
+import { useContextGlobal } from '@/context/GlobalContext'
 
 export default function Profile() {
+
+  const {infoUser, setInfoUser} = useContextGlobal()
+  const [profileUrl, setProfileUrl] = useState(null)
+  const fileRef = useRef(null)
   
+
+
+  useEffect(() =>{
+    async function data(infoUser) {
+      const url = await getProfilePhotoUrl(infoUser.profilePicture);
+      setProfileUrl(url)
+    }
+    data(infoUser)
+  },[infoUser])
+
+
+
+  const handleOpenFilePicker = () => {
+  
+      const res = fileRef.current.click()
+
+  }
+  
+
+  const handleChangeFile = (e) => {
+    const files = e.target.files
+    const fileReader = new FileReader()
+
+    if (fileReader && files && files.length > 0) {
+      
+      fileReader.readAsArrayBuffer(files[0]);
+
+      fileReader.onload = async function() {
+
+        const imageData = fileReader.result;
+        const res = await setUserProfilePhoto(infoUser.uid, imageData)
+        console.log(res)
+
+        if (res) {
+          const tmpUser = { ...infoUser };
+          tmpUser.profilePicture = res.metadata.fullPath;
+          await updateUser(tmpUser);
+          setInfoUser({ ...tmpUser });
+          
+          const url = await getProfilePhotoUrl(infoUser.profilePicture);
+          console.log(infoUser.profilePicture)
+          setProfileUrl(url);
+      }
+      }
+    }
+  }
+  
+
   const [valores, setValores] = useState(
     {
       firstName: "a",
@@ -19,10 +73,24 @@ export default function Profile() {
       address:"a"
     }
   )
-  //console.log(valores)
 
   return(
   <>
+
+    <div className='flex flex-col items-center justify-center mt-6'>
+      <div>
+        <div>
+          <div className='mt-2'>
+            <img src={profileUrl} alt="" width={130} height={130} className='m-auto rounded-full'/>
+          </div>
+          <div className='text-center bg-one-500 rounded-lg p-1 text-white mt-2'>
+            <button onClick={handleOpenFilePicker}>Editar</button>
+            <input type="file" ref={fileRef} onChange={handleChangeFile} className='hidden' />
+          </div>
+      </div>
+      </div>
+    </div>
+
     <Formik
       initialValues={{
           firstName: valores.firstName,
