@@ -49,11 +49,11 @@ export const storage = getStorage(app);
 export async function userExists(uid) {
   const docRef = doc(db, "users", uid);
   const res = await getDoc(docRef);
-  //console.log(res)
   return res.exists();
 }
 
-export async function getInfoUser(uid) {
+//Obtener información de un usuario
+export async function getUserInfo(uid) {
   const docRef = doc(db, "users", uid);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
@@ -63,6 +63,7 @@ export async function getInfoUser(uid) {
   }
 }
 
+//Registrar un nuevo usuario
 export async function registerNewUser(user) {
   try {
     const collectionRef = collection(db, "users");
@@ -73,6 +74,7 @@ export async function registerNewUser(user) {
   }
 }
 
+//Actualizar un usuario
 export async function updateUser(user) {
   try {
     const collectionRef = collection(db, "users");
@@ -83,6 +85,7 @@ export async function updateUser(user) {
   }
 }
 
+//Consultar si existe un username y te devuelve el id
 export async function existsUserName(username) {
   const users = [];
   const docsRef = collection(db, "users"); //minuto 1:12:30
@@ -95,24 +98,6 @@ export async function existsUserName(username) {
   });
 
   return users.length > 0 ? users[0].uid : null;
-}
-
-export async function getUsers(uid) {
-  const users = [];
-  try {
-    const collectionRef = collection(db, "users");
-    const q = query(collectionRef, where("uid", "==", uid));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      const user = { ...doc.data() };
-      user.docId = doc.id;
-      users.push(user);
-    });
-
-    return users;
-  } catch (error) {
-    console.log(error);
-  }
 }
 
 export async function logout() {
@@ -214,9 +199,31 @@ export async function getProfilePhotoUrl(profilePicture) {
   try {
     const imageRef = ref(storage, profilePicture);
     const url = await getDownloadURL(imageRef);
-    console.log(url);
     return url;
   } catch (error) {
     console.log(error);
+  }
+}
+
+//Registrar un nuevo formulario
+
+export async function insertUserForm(newForm) {
+  try {
+    const collectionRef = collection(db, "form");
+    const docRef = doc(collectionRef, newForm.uid);
+    await setDoc(docRef, newForm);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//Obtener form de un user
+export async function getUserForm(uid) {
+  const docRef = doc(db, "form", uid);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    return docSnap.data();
+  } else {
+    console.log("No such document!");
   }
 }

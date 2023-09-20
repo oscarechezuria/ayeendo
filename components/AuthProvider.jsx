@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
-import {auth, getInfoUser, registerNewUser, userExists} from "../firebase/firebase"
+import {auth, getUserInfo, registerNewUser, userExists} from "../firebase/firebase"
 import {useContextGlobal} from "@/context/GlobalContext"
 
 export default function AuthProvider({children, onUserLoggedIn, onUserNotLoggedIn, onUserNotRegistered}) {
@@ -23,7 +23,7 @@ export default function AuthProvider({children, onUserLoggedIn, onUserNotLoggedI
                 //si user esta registrado entras sino registras al usuario
 
                 if (isRegistered) {
-                    const infoUser = await getInfoUser(user.uid)
+                    const infoUser = await getUserInfo(user.uid)
                     setInfoUser(infoUser)
 
                     if (!infoUser.processCompleted) {
@@ -40,7 +40,7 @@ export default function AuthProvider({children, onUserLoggedIn, onUserNotLoggedI
                         processCompleted: false
                     })
                     
-                    const info = await getInfoUser(user.uid)
+                    const info = await getUserInfo(user.uid)
                     setInfoUser(info)
                     
                 }

@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation'
 import React, {useEffect, useState} from 'react'
-import {getUsers, existsUserName, getProfilePhotoUrl} from "../../firebase/firebase"
+import {existsUserName, getProfilePhotoUrl, getUserInfo} from "../../firebase/firebase"
 
 
 export default function page() {
@@ -13,40 +13,23 @@ export default function page() {
     const [profileUrl, setProfileUrl] = useState(null)
 
     const params = useParams()
-    const username = params.username
+    const preUsername = params.username
+    const username = preUsername.toLocaleLowerCase()
     
 
     useEffect(() => {
-        catchUid(username)
+        getUserProfile(username)
     }, [username]);
     
     
-    const catchUid = async (username) => {
+    const getUserProfile = async (username) => {
         const currentId = await existsUserName(username)
-        const infoCurrentUser = await getUsers(currentId)
-        const infoUser = infoCurrentUser[0]
-        const url = await getProfilePhotoUrl(infoUser.profilePicture);
+        const infoCurrentUser = await getUserInfo(currentId)
+        const url = await getProfilePhotoUrl(infoCurrentUser.profilePicture);
         setProfileUrl(url)
         
     }
 
-
-    /* eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
-        catchUid(username)
-    }, [username]);
-    
-    /*
-    const catchUid = async (username) => {
-        const currentId = await existsUserName(username)
-        console.log(currentId)
-        const infoCurrentUser = await getUsers(currentId)
-        setInfoUser(infoCurrentUser)
-        const getInfo = await getInfoUser("Kjst2tLQONoRV3ooPnOQ")
-        setGetInfoUser(getInfo)
-        
-    }
-    */
 
 
     return (
@@ -56,7 +39,7 @@ export default function page() {
         <div>
             <div>
             <div className='mt-2'>
-                <img src={profileUrl} alt="" width={130} height={130} className='m-auto rounded-full'/>
+                <img src={profileUrl} alt="" className='m-auto rounded-md w-64 h-90'/>  
             </div>
         </div>
         </div>
