@@ -227,3 +227,25 @@ export async function getUserForm(uid) {
     console.log("No such document!");
   }
 }
+
+//Insetar redes sociales
+export async function insertUserSocialMedia(newData) {
+  try {
+    const collectionRef = collection(db, "socialMedia");
+    const docRef = doc(collectionRef, newData.uid);
+    await setDoc(docRef, newData);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//Obtener redes sociales
+export async function getUserSocialMedia(uid) {
+  const docRef = doc(db, "socialMedia", uid);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    return docSnap.data();
+  } else {
+    console.log("No such document!");
+  }
+}
