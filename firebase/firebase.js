@@ -1,11 +1,7 @@
 "use client";
 
 import { initializeApp, getApps } from "firebase/app";
-import {
-  getAuth,
-  signOut,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 
 import {
   getFirestore,
@@ -87,6 +83,7 @@ export async function updateUser(user) {
 
 //Consultar si existe un username y te devuelve el id
 export async function existsUserName(username) {
+  console.log(username);
   const users = [];
   const docsRef = collection(db, "users"); //minuto 1:12:30
   const q = query(docsRef, where("username", "==", username));
@@ -121,17 +118,18 @@ export async function insertNewService(newService) {
 export async function getAllServices(uid) {
   const services = [];
   try {
-    const collectionRef = collection(db, "services");
-    const q = query(collectionRef, where("uid", "==", uid));
-    const querySnapshot = await getDocs(q);
+    if (uid != undefined) {
+      const collectionRef = collection(db, "services");
+      const q = query(collectionRef, where("uid", "==", uid));
+      const querySnapshot = await getDocs(q);
 
-    querySnapshot.forEach((doc) => {
-      const service = { ...doc.data() };
-      service.docId = doc.id;
-      services.push(service);
-    });
-
-    return services;
+      querySnapshot.forEach((doc) => {
+        const service = { ...doc.data() };
+        service.docId = doc.id;
+        services.push(service);
+      });
+      return services;
+    }
   } catch (error) {
     console.log(error);
   }

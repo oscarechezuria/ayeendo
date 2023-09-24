@@ -11,7 +11,6 @@ function layoutAdmin({children}) {
 
   const router = useRouter()
 
-
   function handleUserLoggedIn(user) {
     setState(2)   
   }
@@ -21,7 +20,7 @@ function layoutAdmin({children}) {
   }
 
   function handleUserNotLoggedIn(user) {
-    router.push('/');
+    router.push('/login');
   }
 
   if (state === 1){
@@ -30,7 +29,43 @@ function layoutAdmin({children}) {
             onUserLoggedIn={handleUserLoggedIn} 
             onUserNotRegistered={handleUserNotRegistered} 
             onUserNotLoggedIn={handleUserNotLoggedIn}>
-              <div>Cargando .......</div>
+              <>
+                <header>
+                  <nav className="flex mb-4 items-center justify-between flex-wrap p-1 shadow-md">
+                      <div className="flex items-center flex-shrink-0 text-white mr-6" >
+                          <div className='font-black text-one-500 text-2xl p-3 ml-4 lg:ml-16 '
+                              >
+                          AYEENDO
+                          </div>
+                      </div>
+                  </nav>
+                </header>
+
+                <div className='flex flex-col mt-10 p-4'>
+
+                    <div className="border rounded-md max-w-sm w-full mx-auto">
+                        <div className="animate-pulse flex space-x-4">
+                            <div className="rounded-md bg-slate-200 h-80 w-full"></div>
+                        </div>
+                    </div>
+                    <div className="border rounded-md max-w-sm w-full mx-auto mt-2">
+                        <div className="animate-pulse flex space-x-4">
+                            <div className="rounded-md bg-slate-200 h-80 w-full"></div>
+                        </div>
+                    </div>
+                    <div className="border rounded-md max-w-sm w-full mx-auto mt-2">
+                        <div className="animate-pulse flex space-x-4">
+                            <div className="rounded-md bg-slate-200 h-80 w-full"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className='absolute bottom-0 w-full'>
+                  <Footer/>
+                </div>
+              </>
+
     </AuthProvider>
     )
   }
@@ -47,7 +82,6 @@ function layoutAdmin({children}) {
   if (state === 3) {
     return(
     <RegisterUser/>
-
     )}
 
 }

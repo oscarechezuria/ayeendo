@@ -1,15 +1,13 @@
 "use client"
 import React, {useState, useEffect} from 'react'
 import { useForm } from 'react-hook-form'
-import Link from 'next/link'
-import {getUserForm, insertUserForm} from '@/firebase/firebase'
-
+import {getUserForm, insertUserForm} from '../../firebase/firebase'
 import {v4 as uuidv4} from "uuid"
 
 export default function DataFormUser({infoUser}) {
 
   const [dataForm, setDataForm] = useState(null)
-  const {register, handleSubmit, reset, formState:{errors}} = useForm()
+  const {register, handleSubmit, reset} = useForm()
   
 
   useEffect(() =>{
@@ -49,7 +47,6 @@ export default function DataFormUser({infoUser}) {
 
   return(
   <>
-    
           <div className="overflow-auto ">
               
               <form className='flex justify-center mb-12' onSubmit={onsubmit}>
@@ -58,39 +55,30 @@ export default function DataFormUser({infoUser}) {
                           <div className='flex flex-col mb-4 sm:mr-4'>
                                 <label 
                                   className='text-one-500 mb-1'
-                                  htmlFor="firstName" 
                                   >Nombre</label>
                                 <input
                                   className='w-60 border-solid border-2 border-[#ADADAD]-500 rounded p-2 hover:border-two-500 focus:outline-none focus:border-two-500'
                                   type='text'
                                   placeholder='Escriba su nombre'
-                                  {...register("firstName", {required: true})}
+                                  {...register("firstName")}
                                   />
-                                  {
-                                    errors.firtName && <span className='text-red-500'>El nombre es requerido</span>
-                                  }
                           </div>
                           <div className='flex flex-col mb-4'>
                                 <label 
                                   className='text-one-500 mb-1'
-                                  htmlFor="lastName" 
                                   >Apellido</label>
                                 <input
                                   className='w-60 border-solid border-2 border-[#ADADAD]-500 rounded p-2 hover:border-two-500 focus:outline-none focus:border-two-500'
                                   type='text'
-                                  {...register("lastName", {required: true})}
+                                  {...register("lastName")}
                                   placeholder='Escriba su apellido'
                                   />
-                                  {
-                                    errors.lastName && <span className='text-red-500'>El nombre es requerido</span>
-                                  }
                           </div>
                       </div>
                       <div className='flex justify-center flex-col'>
                             <div className='flex justify-center flex-col m-auto mb-4 sm:w-full '>
                                   <label 
                                     className='text-one-500 mb-1'
-                                    htmlFor="service" 
                                     >Especialidad</label>
                                   <select
                                     className='w-60 border-solid border-2 border-[#ADADAD]-500 rounded p-2 hover:border-two-500 focus:outline-none focus:border-two-500 sm:w-full'
@@ -118,32 +106,21 @@ export default function DataFormUser({infoUser}) {
                                       <option value="Cosmetóloga">Cosmetóloga</option>
                                       <option value="Cosmetólogo">Cosmetólogo</option>                              
                                   </select>
-                                  {
-                                    errors.service && <span className='text-red-500'>El nombre es requerido</span>
-                                  }
                             </div>
                             <div className='flex flex-col m-auto mb-4 sm:w-full'>
                                   <label 
                                     className='text-one-500 mb-1'
-                                    htmlFor="professionalDescription" 
                                     >Descripción Profesional</label>
-                                  <input
-                                    type="textarea"
+                                  <textarea
+                                    rows={8}
                                     className='w-60 border-solid border-2 border-[#ADADAD]-500 rounded p-2 hover:border-two-500 focus:outline-none focus:border-two-500 sm:w-full'
                                     {...register("professionalDescription")}
                                     placeholder='¡Permite que tus pacientes te conozcan! dales una breve descripción sobre quien eres, años de experiencia, estudios o incluso hobbies.'
-                                    cols={40}
-                                    rows={6}
-                                    />
-                                  {
-                                    errors.textarea && <span className='text-red-500'>El nombre es requerido</span>
-                                  }                                
-                                  
+                                    />                             
                             </div>
                             <div className='flex flex-col mb-4 sm:w-full'>
                                   <label 
                                     className='text-one-500 mb-1'
-                                    htmlFor="telephone" 
                                     >Teléfono</label>
                                   <div className='flex'>
                                     <h2 className='flex items-center border-2 border-[#ADADAD]-500 rounded-l-lg p-2'>+58</h2>
@@ -152,17 +129,13 @@ export default function DataFormUser({infoUser}) {
                                       type="text"
                                       {...register("telephone")}
                                       placeholder="4147865643"
-                                      />
-                                      {
-                                        errors.telephone && <span className='text-red-500'>El nombre es requerido</span>
-                                      }  
+                                      /> 
                                   </div>
                                   
                             </div>
                             <div className='flex flex-col m-auto mb-4 sm:w-full'>
                                   <label 
                                     className='text-one-500 mb-1'
-                                    htmlFor="gender" 
                                     >Sexo</label>
                                   <select
                                     className='w-60 border-solid border-2 border-[#ADADAD]-500 rounded p-2 hover:border-two-500 focus:outline-none focus:border-two-500 sm:w-full'
@@ -170,60 +143,69 @@ export default function DataFormUser({infoUser}) {
                                     >
                                       <option value="Masculino">M</option>
                                       <option value="Femenino">F</option>
-                                  </select>
-                                  {
-                                    errors.gender && <span className='text-red-500'>El nombre es requerido</span>
-                                  }                                    
+                                  </select>                                 
                             </div>
                             <div className='text-center text-lg my-6 text-two-500 font-semibold'>
                               <h2>Ubicación Profesional</h2>
                             </div>
-                            <div className='flex justify-center flex-col sm:flex-row'>
+                            <div className='flex justify-center flex-col sm:flex-row sm:justify-between'>
                                 <div className='flex flex-col mb-4 sm:mr-4'>
                                       <label 
                                         className='text-one-500 mb-1'
-                                        htmlFor="city" 
                                         >Estado</label>
-                                      <input
-                                        className='w-60 border-solid border-2 border-[#ADADAD]-500 rounded p-2 hover:border-two-500 focus:outline-none focus:border-two-500'
-                                        type='text'
-                                        {...register("city")}
-                                        />
-                                        {
-                                          errors.city && <span className='text-red-500'>El nombre es requerido</span>
-                                        } 
+                                      <select
+                                          className='w-60 border-solid border-2 border-[#ADADAD]-500 rounded p-2 hover:border-two-500 focus:outline-none focus:border-two-500 sm:w-full'
+                                          {...register("city")}
+                                          >
+                                            <option value=""></option>
+                                            <option value="Amazonas">Amazonas</option>
+                                            <option value="Anzoátegui">Anzoátegui</option>
+                                            <option value="Apure">Apure</option>
+                                            <option value="Aragua">Aragua</option>
+                                            <option value="Barinas">Barinas</option>
+                                            <option value="Bolívar">Bolívar</option>
+                                            <option value="Caracas">Caracas</option>
+                                            <option value="Carabobo">Carabobo</option>
+                                            <option value="Cojedes">Cojedes</option>
+                                            <option value="Delta Amacuro">Delta Amacuro</option>
+                                            <option value="Falcón">Falcóna</option>
+                                            <option value="Guárico">Guárico</option>
+                                            <option value="La Guaira">La Guaira</option>
+                                            <option value="Lara">Lara</option>
+                                            <option value="Mérida">Mérida</option>
+                                            <option value="Miranda">Miranda</option>
+                                            <option value="Monagas">Monagas</option>
+                                            <option value="Nueva Esparta">Nueva Esparta</option>
+                                            <option value="Portuguesa">Portuguesa</option>
+                                            <option value="Sucre">Sucre</option>
+                                            <option value="Táchira">Táchira</option>
+                                            <option value="Yaracuy">Yaracuy </option> 
+                                            <option value="Zulia">Zulia </option>                              
+                                        </select>
                                 </div>
                                 <div className='flex flex-col mb-4'>
                                       <label 
-                                        className='text-one-500 mb-1'
-                                        htmlFor="town" 
+                                        className='text-one-500 mb-1' 
                                         >Ciudad o Pueblo</label>
                                       <input
                                         className='w-60 border-solid border-2 border-[#ADADAD]-500 rounded p-2 hover:border-two-500 focus:outline-none focus:border-two-500'
                                         {...register("town")}
                                         />
-                                        {
-                                          errors.town && <span className='text-red-500'>El nombre es requerido</span>
-                                        } 
                                 </div>
                             </div>
                             <div className='flex flex-col m-auto mb-4 sm:w-full'>
                                   <label 
                                     className='text-one-500 mb-1'
-                                    htmlFor="address" 
                                     >Dirección</label>
                                   <input
                                     className='w-60 border-solid border-2 border-[#ADADAD]-500 rounded p-2 hover:border-two-500 focus:outline-none focus:border-two-500 sm:w-full'
                                     {...register("address")}
                                     />
-                                  {
-                                    errors.address && <span className='text-red-500'>El nombre es requerido</span>
-                                  }
                             </div>
                       </div>
                         <button 
                           type="submit"
-                          className='w-full bg-two-500 rounded-lg text-white p-2 text-xl focus:outline-none'
+                          className='w-full bg-two-500 rounded-lg mt-6 text-white p-2 text-xl focus:outline-none'
                           >
                           Guardar
                         </button>

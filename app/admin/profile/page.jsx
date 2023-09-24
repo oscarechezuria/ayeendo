@@ -1,9 +1,9 @@
 "use client"
 import React, {useEffect, useRef, useState} from 'react'
-import { setUserProfilePhoto, updateUser, getProfilePhotoUrl} from '@/firebase/firebase'
-import { useContextGlobal } from '@/context/GlobalContext'
-import DataFormUser from '@/components/profile/DataFormUser'
-import DataSocialMedia from '@/components/profile/DataSocialMedia'
+import { setUserProfilePhoto, updateUser, getProfilePhotoUrl} from '../../../firebase/firebase'
+import { useContextGlobal } from '../../../context/GlobalContext'
+import DataFormUser from '../../../components/profile/DataFormUser'
+import DataSocialMedia from '../../../components/profile/DataSocialMedia'
 
 
 export default function Profile() {
@@ -14,8 +14,6 @@ export default function Profile() {
   
   const fileRef = useRef(null)
   
-
-
   useEffect(() =>{
     async function data(infoUser) {
       const url = await getProfilePhotoUrl(infoUser.profilePicture);
@@ -23,7 +21,6 @@ export default function Profile() {
     }
     data(infoUser)
   },[infoUser])
-
 
 
   const handleOpenFilePicker = () => {
@@ -98,14 +95,3 @@ export default function Profile() {
   </>
 )
 }
-/*
-          firstName: Yup.string().required("El nombre es requerido"),
-          lastName: Yup.string().required("El apellido es requerido"),
-          service: Yup.string(),
-          professionalDescription: Yup.string(),
-          telephone: Yup.string().max(10, "Solo son maximo 10 numeros").matches(/^([0-9])*$/, "Este campo solo permite números"),
-          gender: Yup.string(),
-          city: Yup.string(),
-          town: Yup.string(),
-          address: Yup.string()
-*/

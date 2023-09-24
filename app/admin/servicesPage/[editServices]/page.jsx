@@ -1,86 +1,86 @@
 "use client"
 import React, { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import StepOne from '@/components/servicesfile/StepOne'
-import StepTwo from '@/components/servicesfile/StepTwo'
+import StepOne from '../../../../components/servicesfile/StepOne'
+import StepTwo from '../../../../components/servicesfile/StepTwo'
 import { useContextGlobal } from '@/context/GlobalContext'
 import { getInfoService, updateService } from '@/firebase/firebase'
 
 export default function page() {
-  const {currentUser, } = useContextGlobal()
+    const {currentUser, } = useContextGlobal()
 
-  const [step, setStep] = useState("1")
-  const [docId, setDocId] = useState("")
-  const [service, setService] = useState([])
-  const [stepOne, setStepOne] = useState({
-    name: "",
-    price: "",
-    description: "",
-    duration: "",
-    statusPrice: false,
-  })
+    const [step, setStep] = useState("1")
+    const [docId, setDocId] = useState("")
+    const [service, setService] = useState([])
+    const [stepOne, setStepOne] = useState({
+        name: "",
+        price: "",
+        description: "",
+        duration: "",
+        statusPrice: false,
+    })
 
-  const [stepTwo, setStepTwo] = useState([
-        {name: "Lunes", state: false, hours: []},  
-        {name: "Martes", state: false, hours: []},
-        {name: "Miercoles", state: false, hours: []},
-        {name: "Jueves", state: false, hours: []},
-        {name: "Viernes",state: false, hours: []},
-        {name: "Sabado", state: false, hours: []},
-        {name: "Domingo", state: false, hours: []}
-  ])
+    const [stepTwo, setStepTwo] = useState([
+            {name: "Lunes", state: false, hours: []},  
+            {name: "Martes", state: false, hours: []},
+            {name: "Miercoles", state: false, hours: []},
+            {name: "Jueves", state: false, hours: []},
+            {name: "Viernes",state: false, hours: []},
+            {name: "Sabado", state: false, hours: []},
+            {name: "Domingo", state: false, hours: []}
+    ])
 
-  
-  const params = useParams()
-  const id = params.editServices
-  const router = useRouter()
+    
+    const params = useParams()
+    const id = params.editServices
+    const router = useRouter()
 
-  //Pedimos el servicio según el id del params
-  useEffect( () => {
-    async function data() {
-        const res = await getInfoService(id)
-        setService(res)
+    //Pedimos el servicio según el id del params
+    useEffect( () => {
+        async function data() {
+            const res = await getInfoService(id)
+            setService(res)
+        }
+        data()
+    }, [id])
+
+    //llamamos a la función dataService y la pasamos toda la info del servicio
+    useEffect(() => {
+        dataInfoService(service)
+        dataTimeTable(service)
+        dataId(service)
+    },[service])
+
+    const dataInfoService = (service) => {
+        const data = service.map(item => {
+        const newData = {
+            name: item.infoService.name,
+            price: item.infoService.price,
+            description: item.infoService.description,
+            duration: item.infoService.duration,
+            statusPrice: item.infoService.statusPrice,
+        }
+        setStepOne(newData)
+        }
+        )
     }
-    data()
-  }, [id])
 
-  //llamamos a la función dataService y la pasamos toda la info del servicio
-  useEffect(() => {
-      dataInfoService(service)
-      dataTimeTable(service)
-      dataId(service)
-  },[service])
-
-  const dataInfoService = (service) => {
-    const data = service.map(item => {
-      const newData = {
-        name: item.infoService.name,
-        price: item.infoService.price,
-        description: item.infoService.description,
-        duration: item.infoService.duration,
-        statusPrice: item.infoService.statusPrice,
-      }
-      setStepOne(newData)
+    const dataTimeTable = (service) => {
+        const data = service.map(item => {
+        const newData = item.timetable
+        setStepTwo(newData)
+        }
+        )
     }
-    )
-  }
+    
+    const dataId = (service) => {
+        const data = service.map(item => {
+        const docId = item.docId
+        setDocId(docId)
 
-  const dataTimeTable = (service) => {
-    const data = service.map(item => {
-      const newData = item.timetable
-      setStepTwo(newData)
+        }
+        )
     }
-    )
-  }
-  
-  const dataId = (service) => {
-    const data = service.map(item => {
-      const docId = item.docId
-      setDocId(docId)
-
-    }
-    )
-  }
 
 
     const handleUpdateService = async () => {
@@ -96,7 +96,7 @@ export default function page() {
 
         console.log("informacion enviada con exito")
         router.push("/admin/servicesPage") 
-      
+
     }
 
 
@@ -122,14 +122,24 @@ export default function page() {
             {
                 step === "1"
                 ?
+                <div className='flex justify-center flex-col-reverse gap-4 sm:flex-row'>
                     <div className='flex justify-center'>
                         <button 
-                            className='w-80 bg-two-500 hover:bg-two-600 rounded-lg text-white p-2 text-xl focus:outline-none mb-14 mt-4'
-                            onClick={() => setStep("2")}
+                            className='w-44 bg-two-500 hover:bg-two-600 rounded-lg text-white p-2 text-xl focus:outline-none mb-8 sm:mb-14 sm:mt-4'
+                            onClick={() => router.push("/admin/servicesPage")}
                         >
-                            Siguiente
+                            Cerrar
                         </button>
                     </div>
+                    <div className='flex justify-center'>
+                        <button 
+                            className='w-44 bg-one-500 hover:opacity-90 rounded-lg text-white p-2 text-xl focus:outline-none mb-0 mt-4 sm:mb-14'
+                            onClick={() => setStep("2")}
+                        >
+                            siguiente
+                        </button>
+                    </div>
+                </div>
                 :
                 <div className='flex justify-center flex-col-reverse gap-4 sm:flex-row'>
                     <div className='flex justify-center'>

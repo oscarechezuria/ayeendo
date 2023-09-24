@@ -82,14 +82,24 @@ export default function createServices() {
             {
                 step === "1"
                 ?
+                <div className='flex justify-center flex-col-reverse gap-4 sm:flex-row'>
                     <div className='flex justify-center'>
                         <button 
-                            className='w-80 bg-two-500 hover:bg-two-600 rounded-lg text-white p-2 text-xl focus:outline-none mb-14 mt-4'
-                            onClick={() => setStep("2")}
+                            className='w-44 bg-two-500 hover:bg-two-600 rounded-lg text-white p-2 text-xl focus:outline-none mb-8 sm:mb-14 sm:mt-4'
+                            onClick={() => router.push("/admin/servicesPage")}
                         >
-                            Siguiente
+                            Cerrar
                         </button>
                     </div>
+                    <div className='flex justify-center'>
+                        <button 
+                            className='w-44 bg-one-500 hover:opacity-90 rounded-lg text-white p-2 text-xl focus:outline-none mb-0 mt-4 sm:mb-14'
+                            onClick={() => setStep("2")}
+                        >
+                            siguiente
+                        </button>
+                    </div>
+                </div>
                 :
                 <div className='flex justify-center flex-col-reverse gap-4 sm:flex-row'>
                     <div className='flex justify-center'>

@@ -45,7 +45,8 @@ export default function servicesPage() {
                 !preload
                 ?
 
-                <div className='flex flex-col mt-10'>
+                <div className='flex flex-col mt-10 p-4'>
+
                     <div className="border rounded-md max-w-sm w-full mx-auto">
                         <div className="animate-pulse flex space-x-4">
                             <div className="rounded-md bg-slate-200 h-80 w-full"></div>

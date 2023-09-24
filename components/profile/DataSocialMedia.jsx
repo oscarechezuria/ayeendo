@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import { useForm } from 'react-hook-form'
 import {FaWhatsapp, FaInstagram, FaTiktok} from "react-icons/fa"
-import {insertUserSocialMedia, getUserSocialMedia} from '@/firebase/firebase'
+import {insertUserSocialMedia, getUserSocialMedia} from '../../firebase/firebase'
 import {v4 as uuidv4} from "uuid"
 
 export default function socialNetworks({infoUser}) {
@@ -135,21 +135,3 @@ export default function socialNetworks({infoUser}) {
     
 }
 
-/**
- *
- * {
-                                            getFieldState("checkWhatsapp").isDirty
-                                            ?
-                                                <div className='flex flex-col'>
-                                                <input
-                                                    className='w-60 border-solid border-2 border-[#ADADAD]-500 rounded p-2 hover:border-two-500 focus:outline-none focus:border-two-500'
-                                                    type='text'
-                                                    placeholder='+584147231955'
-                                                    {...register("whatsapp")}
-                                                    />
-                                                <div name="whatsapp" component={() => (<div className='text-red-500'></div>)} />
-                                                </div>
-                                                :
-                                                <h2 className='w-60 p-2'>No disponible</h2>
-                                            }
- */

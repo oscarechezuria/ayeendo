@@ -150,28 +150,36 @@ export default function Home() {
             </div>
             <div className='mt-10'>
               <div className='flex flex-col gap-6 sm:flex md:flex-row'>
-                <div className='flex flex-col border shadow-xl p-10 rounded-xl mb-6'>
+                <div className='flex flex-col border shadow-xl p-8 rounded-xl mb-6'>
                   <div className='w-72'>
-                    <h2 className='text-start font-bold text-two-500'>Plan Mensual</h2>
-                    <div className='flex '>
-                      <h2 className='text-start font-bold text-5xl mt-4'>7.99$</h2>
-                      <span className='text-xl font-bold mt-9 ml-2'>/mes</span>
-                    </div>
-                    <p className='text-start font-bold text-sm mt-3'>Incluye todo este paquete más soporte y todas las futuras actualizaciones.</p>
+                    <p className='text-start font-bold text-xl mt-3'>Vive la experiencia</p>
                   </div>
                   <div className='mt-8'>
                     <ul className='flex flex-col gap-4'>
                       <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Página web</li>
                       <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Calendario online</li>
                       <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Confirmación por email</li>
-                      <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Notificación por whatsapp</li>
                       <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Gestión de pacientes</li>
                       <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Gestión de servicios</li>
                       <li className='flex justify-start gap-4 text-xl text-gray-600'><FaCheck className='text-yellow-300 mr-4'/>Futuras actualizaciones</li>
                     </ul>
                   </div>
                 </div>
-                <div className='flex flex-col border shadow-xl p-10 rounded-xl mb-6'>
+
+              </div>
+            </div>
+        </div>
+
+        <Footer/>
+
+      </div>
+    </>
+  )
+}
+
+
+/**
+                  <div className='flex flex-col border shadow-xl p-10 rounded-xl mb-6'>
                   <div className='w-72'>
                     <h2 className='text-start font-bold text-two-500'>Plan Gratuito</h2>
                     <div className='flex '>
@@ -189,13 +197,4 @@ export default function Home() {
                     </ul>
                   </div>
                 </div>
-              </div>
-            </div>
-        </div>
-
-        <Footer/>
-
-      </div>
-    </>
-  )
-}
+ */
