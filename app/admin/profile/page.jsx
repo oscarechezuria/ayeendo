@@ -22,6 +22,7 @@ export default function Profile() {
     data(infoUser)
   },[infoUser])
 
+  console.log(infoUser)
 
   const handleOpenFilePicker = () => {
     const res = fileRef.current.click()

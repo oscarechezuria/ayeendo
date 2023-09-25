@@ -11,6 +11,7 @@ export default function page() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [infoUser, setInfoUser] = useState({})
     const [profileUrl, setProfileUrl] = useState(null)
+    console.log(infoUser)
 
     const params = useParams()
     const preUsername = params.username

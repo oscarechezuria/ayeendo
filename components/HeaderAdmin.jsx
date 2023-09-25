@@ -31,16 +31,16 @@ return (
     <header>
         <nav className="flex mb-4 items-center justify-between flex-wrap p-1 shadow-md">
             <div className="flex items-center flex-shrink-0 text-white mr-6" >
-                <div href={"/"} className='font-black text-one-500 text-2xl p-3 ml-4 lg:ml-16 '
+                <div href={"/"} className='font-black text-one-500 text-2xl p-3 ml-4 md:ml-16 '
                     >
                 AYEENDO
                 </div>
             </div>
-            <div className="block lg:hidden mr-4" onClick={() => setOpen(!open)}>
+            <div className="block md:hidden mr-4" onClick={() => setOpen(!open)}>
                 <FaBars className='text-one-500 text-1xl text-3xl '/>
             </div>
-            <div className={`flex-grow w-full block ml-6 lg:flex lg:justify-between lg:items-center lg:w-auto lg:ml-0 ${open ? "visible" : "hidden"}`}>
-                <div className="text-sm border-one-500 lg:flex lg:border-l-2">
+            <div className={`flex-grow w-full block ml-6 md:flex md:justify-between md:items-center md:w-auto md:ml-0 ${open ? "visible" : "hidden"}`}>
+                <div className="text-sm border-one-500 md:flex md:border-l-2">
                     <Link href="/admin" className='flex items-center font-semibold text-base text-four-500 p-2 rounded hover:bg-gray-100 ml-2'>
                         <div className="w-8 h-8 flex">
                         <FaCalendarAlt className="text-two-500 m-auto"/>
@@ -66,19 +66,24 @@ return (
                         Perfil
                     </Link>
                 </div>
-                <div className='flex rounded hover:bg-gray-100 p-2 ml-2 mr-12'>
-                        <div>
-                            <FaHandPointLeft className="text-two-500 m-2"/>
-                        </div>
-                        <button
-                            className='text-base text-four-500 font-semibold outline-none'   
+                <div className='flex rounded hover:bg-gray-100 p-2 ml-2 mr-12 hover:cursor-pointer'>
+                        <div
                             onClick={handleLogout}
                         >
-                            Cerrar Sesión
-                        </button> 
+                            <FaHandPointLeft className="text-red-500 m-2"/>
+                        </div>
                 </div>
             </div>
         </nav>
     </header>
 )
 }
+
+/*
+                        <button
+                            className='text-base text-four-500 font-semibold outline-none'   
+                            onClick={handleLogout}
+                        >
+                            Cerrar Sesión
+                        </button> 
+*/
