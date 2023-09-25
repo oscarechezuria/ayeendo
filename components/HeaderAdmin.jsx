@@ -19,6 +19,7 @@ export default function HeaderAdmin() {
 
     try {
         await logout()
+            setOpen(false)
             router.push('/')
             setStepRegister(1)
     
@@ -29,50 +30,63 @@ export default function HeaderAdmin() {
 
 return (
     <header>
-        <nav className="flex mb-4 items-center justify-between flex-wrap p-1 shadow-md">
+        <nav className="flex mb-4 items-center justify-between  flex-wrap p-1 shadow-md">
             <div className="flex items-center flex-shrink-0 text-white mr-6" >
                 <div href={"/"} className='font-black text-one-500 text-2xl p-3 ml-4 md:ml-16 '
                     >
                 AYEENDO
                 </div>
-            </div>
-            <div className="block md:hidden mr-4" onClick={() => setOpen(!open)}>
-                <FaBars className='text-one-500 text-1xl text-3xl '/>
-            </div>
-            <div className={`flex-grow w-full block ml-6 md:flex md:justify-between md:items-center md:w-auto md:ml-0 ${open ? "visible" : "hidden"}`}>
-                <div className="text-sm border-one-500 md:flex md:border-l-2">
-                    <Link href="/admin" className='flex items-center font-semibold text-base text-four-500 p-2 rounded hover:bg-gray-100 ml-2'>
-                        <div className="w-8 h-8 flex">
-                        <FaCalendarAlt className="text-two-500 m-auto"/>
+                <div className={`absolute top-16 bg-white w-full md:flex md:static md:items-center border-b-2 md:border-b-0 md:w-auto md:ml-0 ${open ? "visible" : "hidden"}`}>
+                    <div className="ml-8 text-sm border-one-500 md:flex md:border-l-2">
+                        <div onClick={() => setOpen(false)}>
+                            <Link href="/admin" className='flex items-center font-semibold text-base text-four-500 p-2 rounded hover:bg-gray-100 ml-2 mr-4 md:mr-0'>
+                                <div className="w-8 h-8 flex">
+                                <FaCalendarAlt className="text-two-500 m-auto"/>
+                                </div>
+                                Mi Agenda
+                            </Link>
                         </div>
-                        Mi Agenda
-                    </Link>
-                    <Link href="/admin/appointment" className='flex items-center font-semibold text-base text-four-500 p-2 rounded hover:bg-gray-100 ml-2'>
-                        <div className="w-8 h-8 flex">
-                        <FaUsers className="text-two-500 m-auto"/>
+                        <div onClick={() => setOpen(false)}>
+                            <Link href="/admin/appointment" className='flex items-center font-semibold text-base text-four-500 p-2 rounded hover:bg-gray-100 ml-2 mr-4 md:mr-0'>
+                                <div className="w-8 h-8 flex">
+                                <FaUsers className="text-two-500 m-auto"/>
+                                </div>
+                                Citas
+                            </Link>
                         </div>
-                        Citas
-                    </Link>
-                    <Link href="/admin/servicesPage" className='flex items-center font-semibold text-base text-four-500 p-2 rounded hover:bg-gray-100 ml-2'>
-                        <div className="w-8 h-8 flex">
-                        <FaGripVertical className="text-two-500 m-auto"/>
+                        <div onClick={() => setOpen(false)}>
+                            <Link href="/admin/servicesPage" className='flex items-center font-semibold text-base text-four-500 p-2 rounded hover:bg-gray-100 ml-2 mr-4 md:mr-0'>
+                                <div className="w-8 h-8 flex">
+                                <FaGripVertical className="text-two-500 m-auto"/>
+                                </div>
+                                Servicios
+                            </Link>
                         </div>
-                        Servicios
-                    </Link>
-                    <Link href="/admin/profile" className='flex items-center font-semibold text-base text-four-500 p-2 rounded hover:bg-gray-100 ml-2'>
-                        <div className="w-8 h-8 flex">
-                        <FaUserEdit className="text-two-500 m-auto"/>
+                        <div onClick={() => setOpen(false)}>
+                            <Link href="/admin/profile" className='flex items-center font-semibold text-base text-four-500 p-2 rounded hover:bg-gray-100 ml-2 mr-4 md:mr-0'>
+                                <div className="w-8 h-8 flex">
+                                <FaUserEdit className="text-two-500 m-auto"/>
+                                </div>
+                                Perfil
+                            </Link>
                         </div>
-                        Perfil
-                    </Link>
+                    </div>
+                    <div className={`flex rounded hover:bg-gray-100 p-2 ml-10 mr-4 mb-4 hover:cursor-pointer visible md:mr-6 md:ml-0 md:hidden`} onClick={handleLogout}>
+                        <div>
+                                <FaHandPointLeft className="text-red-500 m-2"/>
+                        </div>
+                    </div>
                 </div>
-                <div className='flex rounded hover:bg-gray-100 p-2 ml-2 mr-12 hover:cursor-pointer'>
-                        <div
-                            onClick={handleLogout}
+            </div>
+            <div className={`flex rounded hover:bg-gray-100 p-2 ml-10 hover:cursor-pointer invisible md:mr-6 md:ml-0 md:visible`} onClick={() => setOpen(false)}>
+                    <div
+                        onClick={handleLogout}
                         >
                             <FaHandPointLeft className="text-red-500 m-2"/>
-                        </div>
-                </div>
+                    </div>
+            </div>
+            <div className="block md:hidden mr-4 hover:cursor-pointer" onClick={() => setOpen(!open)}>
+                <FaBars className='text-one-500 text-1xl text-3xl '/>
             </div>
         </nav>
     </header>
