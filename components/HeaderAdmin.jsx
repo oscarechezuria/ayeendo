@@ -30,16 +30,16 @@ export default function HeaderAdmin() {
 
 return (
     <header>
-        <nav className="flex mb-4 items-center justify-between  flex-wrap p-1 shadow-md">
-            <div className="flex items-center flex-shrink-0 text-white mr-6" >
+        <nav className="flex mb-4 items-center justify-between  flex-wrap shadow-md">
+            <div className="flex items-center flex-shrink-0 text-white" >
                 <div href={"/"} className='font-black text-one-500 text-2xl p-3 ml-4 md:ml-16 '
                     >
                 AYEENDO
                 </div>
-                <div className={`absolute top-16 bg-white w-full md:flex md:static md:items-center border-b-2 md:border-b-0 md:w-auto md:ml-0 ${open ? "visible" : "hidden"}`}>
+                <div className={`absolute top-16 bg-white w-full md:flex md:static md:items-center border-b-2 md:border-b-0 md:w-auto ${open ? "visible" : "hidden"}`}>
                     <div className="ml-8 text-sm border-one-500 md:flex md:border-l-2">
                         <div onClick={() => setOpen(false)}>
-                            <Link href="/admin" className='flex items-center font-semibold text-base text-four-500 p-2 rounded hover:bg-gray-100 ml-2 mr-4 md:mr-0'>
+                            <Link href="/admin" className='flex items-center font-semibold text-base mt-2 text-four-500 p-2 rounded hover:bg-gray-100'>
                                 <div className="w-8 h-8 flex">
                                 <FaCalendarAlt className="text-two-500 m-auto"/>
                                 </div>
@@ -47,7 +47,7 @@ return (
                             </Link>
                         </div>
                         <div onClick={() => setOpen(false)}>
-                            <Link href="/admin/appointment" className='flex items-center font-semibold text-base text-four-500 p-2 rounded hover:bg-gray-100 ml-2 mr-4 md:mr-0'>
+                            <Link href="/admin/appointment" className='flex items-center font-semibold text-base text-four-500 p-2 rounded hover:bg-gray-100'>
                                 <div className="w-8 h-8 flex">
                                 <FaUsers className="text-two-500 m-auto"/>
                                 </div>
@@ -55,7 +55,7 @@ return (
                             </Link>
                         </div>
                         <div onClick={() => setOpen(false)}>
-                            <Link href="/admin/servicesPage" className='flex items-center font-semibold text-base text-four-500 p-2 rounded hover:bg-gray-100 ml-2 mr-4 md:mr-0'>
+                            <Link href="/admin/servicesPage" className='flex items-center font-semibold text-base text-four-500 p-2 rounded hover:bg-gray-100'>
                                 <div className="w-8 h-8 flex">
                                 <FaGripVertical className="text-two-500 m-auto"/>
                                 </div>
@@ -63,7 +63,7 @@ return (
                             </Link>
                         </div>
                         <div onClick={() => setOpen(false)}>
-                            <Link href="/admin/profile" className='flex items-center font-semibold text-base text-four-500 p-2 rounded hover:bg-gray-100 ml-2 mr-4 md:mr-0'>
+                            <Link href="/admin/profile" className='flex items-center font-semibold text-base text-four-500 p-2 rounded hover:bg-gray-100'>
                                 <div className="w-8 h-8 flex">
                                 <FaUserEdit className="text-two-500 m-auto"/>
                                 </div>
@@ -71,14 +71,14 @@ return (
                             </Link>
                         </div>
                     </div>
-                    <div className={`flex rounded hover:bg-gray-100 p-2 ml-10 mr-4 mb-4 hover:cursor-pointer visible md:mr-6 md:ml-0 md:hidden`} onClick={handleLogout}>
+                    <div className={`flex rounded hover:bg-gray-100 ml-10 mr-4 mb-4 hover:cursor-pointer visible md:mr-6 md:ml-0 md:hidden`} onClick={handleLogout}>
                         <div>
                                 <FaHandPointLeft className="text-red-500 m-2"/>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className={`flex rounded hover:bg-gray-100 p-2 ml-10 hover:cursor-pointer invisible md:mr-6 md:ml-0 md:visible`} onClick={() => setOpen(false)}>
+            <div className={`flex rounded text-xs md:text-lg hover:bg-gray-100 md:p-2 hover:cursor-pointer invisible md:mr-6 md:ml-10 md:visible`} onClick={() => setOpen(false)}>
                     <div
                         onClick={handleLogout}
                         >
@@ -92,12 +92,3 @@ return (
     </header>
 )
 }
-
-/*
-                        <button
-                            className='text-base text-four-500 font-semibold outline-none'   
-                            onClick={handleLogout}
-                        >
-                            Cerrar Sesión
-                        </button> 
-*/

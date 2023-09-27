@@ -23,7 +23,7 @@ export default function Home() {
         <div className="flex justify-start gap-12 items-center ml-4 h-120 p-4 text-white text-4xl sm:ml-28">
           <div>
             <div className="flex">
-              <h2 className="text-5xl">Lleva tu <span className="text-yellow-300">consultorio</span> al siguiente nivel</h2>
+              <h2 className="text-5xl">Lleva tu <span className="text-yellow-300">agenda</span> al siguiente nivel</h2>
             </div>
             <h2 className='text-4xl mt-3'>¡No más papeles!</h2>
             <div className="flex flex-col items-start gap-2 mt-12">
