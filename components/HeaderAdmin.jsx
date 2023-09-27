@@ -33,13 +33,13 @@ return (
         <nav className="flex mb-4 items-center justify-between  flex-wrap shadow-md">
             <div className="flex items-center flex-shrink-0 text-white" >
                 <div href={"/"} className='font-black text-one-500 text-2xl p-3 ml-4 md:ml-16 '
-                    >
+                >
                 AYEENDO
                 </div>
                 <div className={`absolute top-16 bg-white w-full md:flex md:static md:items-center border-b-2 md:border-b-0 md:w-auto ${open ? "visible" : "hidden"}`}>
                     <div className="ml-8 text-sm border-one-500 md:flex md:border-l-2">
                         <div onClick={() => setOpen(false)}>
-                            <Link href="/admin" className='flex items-center font-semibold text-base mt-2 text-four-500 p-2 rounded hover:bg-gray-100'>
+                            <Link href="/admin" className='flex items-center font-semibold text-base mt-2 text-four-500 p-2 rounded hover:bg-gray-100 md:mt-0'>
                                 <div className="w-8 h-8 flex">
                                 <FaCalendarAlt className="text-two-500 m-auto"/>
                                 </div>

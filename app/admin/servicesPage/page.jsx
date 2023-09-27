@@ -74,35 +74,45 @@ export default function servicesPage() {
                         <div>
                         <h1 className='mt-10 mb-6 px-8 text-center text-xl font-semibold text-one-500'>Estos son todos tus servicios creados</h1>
                         
-                        <div>
+                        <div className='flex flex-col gap-4'>
                             {
                                 allServices.map((item, index) => (
-                                <div key={index}>
+                                <div key={index} className='flex justify-center gap-4'>
                                     {
-                                    <div className='flex justify-center px-6'>
-                                        <div className='flex flex-col justify-center p-4 mb-4 border rounded-lg sm:flex-row'>
-                                        <div className='p-2 boder-r-0 sm:border-r-2'>
-                                            <p className='h-auto break-words w-52'>{item.infoService.name}</p>
-                                        </div>
-                                        <div className='flex justify-center p-2 w-24 items-center boder-r-0 sm:border-r-2'>
-                                            <FaMoneyBillAlt className='text-two-500 mr-2'/>
-                                            <h2>{`${item.infoService.price} $`}</h2>
-                                        </div>
-                                        <div className='flex justify-center p-2 w-24 items-center'>
-                                            <FaClock className='text-two-500 mr-2'/>
-                                            <h2>{item.infoService.duration}</h2>
-                                        </div>
-                                        <div className='flex justify-center items-center ml-0 sm:ml-8'>
-                                            <div className='mr-4'>
-                                            <Link href={`/admin/servicesPage/${item.id}`} className='text-yellow-700 bg-yellow-200 p-2 rounded-lg focus:outline-none'>Editar</Link>
+                                    <div className='flex flex-col border rounded-lg justify-center items-center w-10/12 p-4 md:w-7/12'>
+                                        <div className='flex flex-col justify-center items-center gap-2 w-full'>
+                                            <div className='flex flex-col w-full justify-between md:flex-row md:g-6'>
+                                                <div>
+                                                    <div className='text-two-500 font-semibold p-2'>
+                                                        <p>{item.infoService.name}</p>
+                                                    </div>
+                                                </div>
+                                                <div className='flex gap-4 p-2'>
+                                                    <div className='flex justify-center items-center gap-2'>
+                                                        <FaMoneyBillAlt/>
+                                                        <h2>{`${item.infoService.price} $`}</h2>
+                                                    </div>
+                                                    <div className='flex justify-center items-center gap-2'>
+                                                        <FaClock/>
+                                                        <h2>{item.infoService.duration}</h2>
+                                                    </div>
+                                                </div>
                                             </div>
+                                            <div className='border-y-2 p-2 w-full'>
+                                                <div className='flex justify-center items-center'>
+                                                    <h2>{item.infoService.description}</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className='flex justify-between w-full items-center mb-2 gap-6 mt-6 md:justify-center'>
                                             <div>
-                                            <button className='text-red-700 bg-red-200 p-2 rounded-lg focus:outline-none' onClick={(e) => handleDelete(e, index)}>Eliminar</button>
+                                                <Link href={`/admin/servicesPage/${item.id}`} className='text-md text-yellow-700 bg-yellow-200 rounded-lg p-2 mt-6 focus:outline-none'>Editar</Link>
                                             </div>
-                                        </div>
+                                            <div onClick={(e) => handleDelete(e, index)}>
+                                                <Link href={""} className='text-md text-red-700 bg-red-200 rounded-lg p-2 mt-6 focus:outline-none'>Eliminar</Link>
+                                            </div>
                                         </div>
                                     </div>
-    
                                     }
                                 </div>
                                 ))
