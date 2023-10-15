@@ -5,6 +5,7 @@ import StepOne from '../../../../components/servicesfile/StepOne'
 import StepTwo from '../../../../components/servicesfile/StepTwo'
 import { useContextGlobal } from '@/context/GlobalContext'
 import { getInfoService, updateService } from '@/firebase/firebase'
+import HeaderAdmin from '@/components/HeaderAdmin'
 
 export default function page() {
     const {currentUser, } = useContextGlobal()
@@ -102,66 +103,70 @@ export default function page() {
 
     return (
 
-        <div className='flex flex-col'>
-            <div className='flex justify-center gap-8 mt-6 mb-2'>
-                <div className={step === "1" ? `bg-blue-300 rounded-full p-2 w-10 text-center`: `bg-gray-100 rounded-full p-2 w-10 text-center` }>
-                    <span>1</span>
-                </div>
-                <div className={step === "2" ? `bg-blue-300 rounded-full p-2 w-10 text-center`: `bg-gray-100 rounded-full p-2 w-10 text-center` }>
-                    <span>2</span>
-                </div>
-            </div>
-            {
-                step === "1" 
-                ?
-                <StepOne stepOne={stepOne} setStepOne={setStepOne}/>
-                :
-                <StepTwo stepTwo={stepTwo} setStepTwo={setStepTwo}/>
-                
-            }
-            {
-                step === "1"
-                ?
-                <div className='flex justify-center flex-col-reverse gap-4 sm:flex-row'>
-                    <div className='flex justify-center'>
-                        <button 
-                            className='w-44 bg-two-500 hover:bg-two-600 rounded-lg text-white p-2 text-xl focus:outline-none mb-8 sm:mb-14 sm:mt-4'
-                            onClick={() => router.push("/admin/servicesPage")}
-                        >
-                            Cerrar
-                        </button>
-                    </div>
-                    <div className='flex justify-center'>
-                        <button 
-                            className='w-44 bg-one-500 hover:opacity-90 rounded-lg text-white p-2 text-xl focus:outline-none mb-0 mt-4 sm:mb-14'
-                            onClick={() => setStep("2")}
-                        >
-                            siguiente
-                        </button>
-                    </div>
-                </div>
-                :
-                <div className='flex justify-center flex-col-reverse gap-4 sm:flex-row'>
-                    <div className='flex justify-center'>
-                        <button 
-                            className='w-60 bg-two-500 hover:bg-two-600 rounded-lg text-white p-2 text-xl focus:outline-none mb-8 sm:mb-14 sm:mt-4'
-                            onClick={() => setStep("1")}
-                        >
-                            Atras
-                        </button>
-                    </div>
-                    <div className='flex justify-center'>
-                        <button 
-                            className='w-60 bg-one-500 hover:opacity-90 rounded-lg text-white p-2 text-xl focus:outline-none mb-0 mt-4 sm:mb-14'
-                            onClick={handleUpdateService}
-                        >
-                            Actualizar
-                        </button>
-                    </div>
-                </div>
-            }
+        <>
+            <HeaderAdmin/>
 
-        </div>
+            <div className='flex flex-col'>
+                <div className='flex justify-center gap-8 mt-6 mb-2'>
+                    <div className={step === "1" ? `bg-blue-300 rounded-full p-2 w-10 text-center`: `bg-gray-100 rounded-full p-2 w-10 text-center` }>
+                        <span>1</span>
+                    </div>
+                    <div className={step === "2" ? `bg-blue-300 rounded-full p-2 w-10 text-center`: `bg-gray-100 rounded-full p-2 w-10 text-center` }>
+                        <span>2</span>
+                    </div>
+                </div>
+                {
+                    step === "1" 
+                    ?
+                    <StepOne stepOne={stepOne} setStepOne={setStepOne}/>
+                    :
+                    <StepTwo stepTwo={stepTwo} setStepTwo={setStepTwo}/>
+                    
+                }
+                {
+                    step === "1"
+                    ?
+                    <div className='flex justify-center flex-col-reverse gap-4 sm:flex-row'>
+                        <div className='flex justify-center'>
+                            <button 
+                                className='w-44 bg-two-500 hover:bg-two-600 rounded-lg text-white p-2 text-xl focus:outline-none mb-8 sm:mb-14 sm:mt-4'
+                                onClick={() => router.push("/admin/servicesPage")}
+                            >
+                                Cerrar
+                            </button>
+                        </div>
+                        <div className='flex justify-center'>
+                            <button 
+                                className='w-44 bg-one-500 hover:opacity-90 rounded-lg text-white p-2 text-xl focus:outline-none mb-0 mt-4 sm:mb-14'
+                                onClick={() => setStep("2")}
+                            >
+                                siguiente
+                            </button>
+                        </div>
+                    </div>
+                    :
+                    <div className='flex justify-center flex-col-reverse gap-4 sm:flex-row'>
+                        <div className='flex justify-center'>
+                            <button 
+                                className='w-60 bg-two-500 hover:bg-two-600 rounded-lg text-white p-2 text-xl focus:outline-none mb-8 sm:mb-14 sm:mt-4'
+                                onClick={() => setStep("1")}
+                            >
+                                Atras
+                            </button>
+                        </div>
+                        <div className='flex justify-center'>
+                            <button 
+                                className='w-60 bg-one-500 hover:opacity-90 rounded-lg text-white p-2 text-xl focus:outline-none mb-0 mt-4 sm:mb-14'
+                                onClick={handleUpdateService}
+                            >
+                                Actualizar
+                            </button>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </>
 
     )
 }

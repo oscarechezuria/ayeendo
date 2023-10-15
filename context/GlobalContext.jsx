@@ -18,6 +18,7 @@ export default function GlobalProvider({children}) {
     const [infoUser, setInfoUser] = useState({})
     const [stepRegister, setStepRegister] = useState(1)
     const [allServices, setAllServices] = useState([])
+    const [openSidebar, setOpenSidebar] = useState(true)
 
 
 
@@ -39,7 +40,9 @@ export default function GlobalProvider({children}) {
             stepRegister, 
             setStepRegister,
             allServices,
-            setAllServices
+            setAllServices,
+            openSidebar,
+            setOpenSidebar
             }}>
             {children}
         </GlobalContext.Provider>

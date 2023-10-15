@@ -4,6 +4,7 @@ import { setUserProfilePhoto, updateUser, getProfilePhotoUrl} from '../../../fir
 import { useContextGlobal } from '../../../context/GlobalContext'
 import DataFormUser from '../../../components/profile/DataFormUser'
 import DataSocialMedia from '../../../components/profile/DataSocialMedia'
+import HeaderAdmin from '@/components/HeaderAdmin'
 
 
 export default function Profile() {
@@ -21,8 +22,6 @@ export default function Profile() {
     }
     data(infoUser)
   },[infoUser])
-
-  console.log(infoUser)
 
   const handleOpenFilePicker = () => {
     const res = fileRef.current.click()
@@ -57,42 +56,43 @@ export default function Profile() {
 
 
   return(
-  <>
+    <>
+        <HeaderAdmin/>
 
-    <div className='flex flex-col items-center justify-center mt-6'>
-      <div>
-        <div>
-          <div className='mt-2'>
-            <img src={profileUrl} alt="" className='m-auto rounded-md w-28 h-85'/>
+        <div className='flex flex-col items-center justify-center mt-6'>
+          <div>
+            <div>
+              <div className='mt-2'>
+                <img src={profileUrl} alt="" className='m-auto rounded-md w-28 h-85'/>
+              </div>
+              <div className='text-center bg-one-500 rounded-lg p-1 text-white mt-2'>
+                <button onClick={handleOpenFilePicker}>Editar</button>
+                <input type="file" ref={fileRef} onChange={handleChangeFile} className='hidden' />
+              </div>
           </div>
-          <div className='text-center bg-one-500 rounded-lg p-1 text-white mt-2'>
-            <button onClick={handleOpenFilePicker}>Editar</button>
-            <input type="file" ref={fileRef} onChange={handleChangeFile} className='hidden' />
           </div>
-      </div>
-      </div>
-    </div>
-    <div className='flex justify-center mb-10 mt-8'>
-        <div className={`mr-12 p-2 hover:text-two-500 hover:border-two-500 border-b-4 ${statePage === "1" ? "text-two-500 border-two-500 border-b-4" : ""}`} onClick={() => setStatePage("1")}>
-          <button >General</button>
         </div>
-        <div className={`p-2 hover:text-two-500 hover:border-two-500 border-b-4 ${statePage === "2" ? "text-two-500 border-two-500 border-b-4" : ""}`} onClick={() => setStatePage("2")}>
-          <button>Redes sociales</button>
+        <div className='flex justify-center mb-10 mt-8'>
+            <div className={`mr-12 p-2 hover:text-two-500 hover:border-two-500 border-b-4 ${statePage === "1" ? "text-two-500 border-two-500 border-b-4" : ""}`} onClick={() => setStatePage("1")}>
+              <button >General</button>
+            </div>
+            <div className={`p-2 hover:text-two-500 hover:border-two-500 border-b-4 ${statePage === "2" ? "text-two-500 border-two-500 border-b-4" : ""}`} onClick={() => setStatePage("2")}>
+              <button>Redes sociales</button>
+            </div>
         </div>
-    </div>
 
-    {
-      statePage == "1"
-      ?
-      <div>
-        <DataFormUser infoUser={infoUser}/>
-      </div>
-      :
-      <div>
-        <DataSocialMedia infoUser={infoUser}/>
-      </div>
-    }
-    
-  </>
+        {
+          statePage == "1"
+          ?
+          <div>
+            <DataFormUser infoUser={infoUser}/>
+          </div>
+          :
+          <div>
+            <DataSocialMedia infoUser={infoUser}/>
+          </div>
+        }
+        
+    </>
 )
 }

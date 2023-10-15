@@ -8,9 +8,6 @@ import Footer from '@/components/Footer';
 import { useRouter } from 'next/navigation'
 
 
-/*#FFFF00*/
-
-//<BsRocketTakeoff className="animationFront invisible text-yellow-300 md:text-9xl md:visible"/>
 export default function Home() {
 
   const router = useRouter()

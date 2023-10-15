@@ -1,7 +1,12 @@
+"use client"
+import HeaderAdmin from '@/components/HeaderAdmin'
 import React from 'react'
 
 export default function appointment() {
   return (
-    <div>Aqui van todas las citas</div>
+    <>
+      <HeaderAdmin/>
+      <div>Aqui van todas las citas</div>
+    </>
   )
 }

@@ -1,6 +1,6 @@
 "use client"
 import Footer from '@/components/Footer'
-import HeaderAdmin from '@/components/HeaderAdmin'
+import Sidebar from '@/components/Sidebar'
 import React, { useState } from 'react'
 import AuthProvider from '@/components/AuthProvider'
 import { useRouter } from 'next/navigation'
@@ -72,10 +72,14 @@ function layoutAdmin({children}) {
 
   if (state === 2){
   return (
-    <div className='flex flex-col min-h-screen'>
-        <HeaderAdmin/>
+    <div className='flex flex-col'>
+      <div className='flex h-1'>
+        <Sidebar/>
+        <div className='flex flex-col w-full overflow-auto'>
           {children}
-        <Footer/>
+          <Footer/>
+        </div>
+      </div>
     </div>
   )}
 

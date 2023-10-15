@@ -1,4 +1,5 @@
 import GlobalProvider from '@/context/GlobalContext'
+import { CalendarProvider } from '@/context/CalendarContext'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -14,7 +15,9 @@ export default function AdminLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <GlobalProvider>
-          {children}
+          <CalendarProvider>
+            {children}
+          </CalendarProvider>
         </GlobalProvider>
       </body>
     </html>
