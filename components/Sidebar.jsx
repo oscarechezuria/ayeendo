@@ -28,7 +28,7 @@ export default function Sidebar() {
 }
 
 return (
-    <header className='w-1/5'>
+    <header className=' md:w-1/5'>
         <nav className={`absolute bg-white h-2 w-full items-center justify-between flex-wrap shadow-md md:static ${openSidebar ? "visible md:visible" : "invisible md:visible"}`}>
             <div className="flex flex-col w-full items-center p-4 text-white" >
                 <div className='font-black text-one-500 text-2xl mt-8 p-3 md:border-b border-one-500'>
