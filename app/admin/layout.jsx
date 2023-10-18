@@ -1,9 +1,11 @@
 "use client"
 import Footer from '@/components/Footer'
 import Sidebar from '@/components/Sidebar'
-import React, { useState } from 'react'
+import React, { useState} from 'react'
 import AuthProvider from '@/components/AuthProvider'
 import { useRouter } from 'next/navigation'
+import Modal from '@/components/calendar/Modal'
+
 
 function layoutAdmin({children}) {
 
@@ -74,6 +76,7 @@ function layoutAdmin({children}) {
   return (
     <div className='flex flex-col'>
       <div className='flex h-1'>
+        <Modal/>
         <Sidebar/>
         <div className='flex flex-col w-full overflow-auto'>
           {children}

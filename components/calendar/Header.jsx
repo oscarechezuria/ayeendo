@@ -2,7 +2,7 @@
 /* eslint-disable no-unreachable */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import {useContext, useEffect, useState} from 'react';
+import {useContext, useState} from 'react';
 import {
     BiChevronLeft,
     BiChevronRight,
@@ -14,7 +14,7 @@ import dayjs from "dayjs";
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false)
 
-    const {selectedDate, setCalendar, amountDay, setAmountDay, setDayOption} = useContext(CalendarContext);
+    const {selectedDate, setCalendar, amountDay, setAmountDay, setDayOption, openModal, setOpenModal} = useContext(CalendarContext);
 
     const moreOrLessDays = (amountDay) => {
         switch (amountDay) {
@@ -131,7 +131,12 @@ export default function Header() {
                     </div>
                     <div className='flex justify-center gap-2 mr-0 md:mr-6'>
                         <div>
-                            <h2 className='w-24 p-2 bg-slate-100 text-base text-center rounded-md cursor-pointer md:text-lg'>Crear</h2>
+                            <button 
+                                className='w-24 p-2 bg-slate-100 text-base text-center rounded-md cursor-pointer md:text-lg'
+                                onClick={() => setOpenModal(!openModal)}
+                                >
+                                    Crear
+                            </button>
                         </div>
                         <div>
                             <h2 className='w-24 p-2 bg-blue-600 text-white text-base rounded-md cursor-pointer text-center md:text-lg' onClick={() => setIsOpen(!isOpen)}>{amountDay}</h2>

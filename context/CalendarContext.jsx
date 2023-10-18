@@ -18,6 +18,7 @@ export const CalendarProvider = ({children}) => {
         smallCalendarMonth: 0,
         amountDay: "4 Días",
         dayOption: 4,
+        openModal: false,
         newEventData: {
             isOpen: false,
             isEventCreateInitialize: false,
@@ -68,6 +69,14 @@ export const CalendarProvider = ({children}) => {
         users: state.users,
         amountDay: state.amountDay,
         dayOption: state.dayOption,
+        openModal: state.openModal,
+        setOpenModal(bol){
+            setState( prev => ({
+                ...prev,
+                openModal: bol
+            })
+            )
+        },
         setAmountDay(val){
             setState(prev => ({ 
                 ...prev,

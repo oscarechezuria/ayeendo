@@ -148,7 +148,7 @@ export default function ViewFourDay({matrixDay}) {
             }
         </div>
 
-        <div className="flex w-full overflow-auto h-118">
+        <div className="flex w-full overflow-auto h-1">
             <div>
                 {
                     Array.from({length: 24}).map((item, hour) => (
