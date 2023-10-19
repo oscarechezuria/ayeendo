@@ -28,16 +28,16 @@ export default function Sidebar() {
 }
 
 return (
-    <header className='md:w-1/5'>
+    <div className='md:w-1/5'>
         <nav className={`absolute bg-white h-2 w-full items-center justify-between flex-wrap shadow-md md:static ${openSidebar ? "visible md:visible" : "invisible md:visible"}`}>
-            <div className="flex flex-col w-full items-center p-4 text-white" >
-                <div className='font-black text-one-500 text-2xl mt-8 p-3 md:border-b border-one-500'>
+            <div className="flex flex-col w-full  p-4 text-white" >
+                <div className='flex items-center justify-center font-black text-one-500 text-2xl mt-8 p-3 md:border-b border-one-500'>
                     <h2 className='hidden md:block'>AYEENDO</h2>
                     <div className="block md:hidden mr-4 hover:cursor-pointer" onClick={() => setOpenSidebar(!openSidebar)}>
                         <FaCircleXmark className='text-one-500 text-1xl text-3xl '/>
                     </div>
                 </div>
-                <div className={`flex flex-col bg-white w-full mt-4 md:flex md:items-center md:w-auto`}>
+                <div className={`flex flex-col bg-white w-full mt-6 md:flex md:items-start md:w-auto`}>
                     <div className="flex flex-col w-full text-sm pl-14 md:pl-0">
                         <div onClick={() => setOpenSidebar(!openSidebar)}>
                             <Link href="/admin" className='flex items-center font-semibold text-base text-four-500 p-2 rounded hover:bg-gray-100 md:mt-0'>
@@ -81,6 +81,6 @@ return (
                 </div>
             </div>
         </nav>
-    </header>
+    </div>
 )
 }
