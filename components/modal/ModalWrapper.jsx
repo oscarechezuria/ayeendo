@@ -17,7 +17,7 @@ export default function ModalWrapper() {
         if (stepModal === 3) {
             setOpenModal(!openModal)
             setStepModal(1)
-            console.log("Evento Creado con exito")
+            console.log("Evento Creado conn exito")
         }else{
             setStepModal(stepModal + 1)
         }
